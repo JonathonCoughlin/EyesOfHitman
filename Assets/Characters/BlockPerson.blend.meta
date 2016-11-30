@@ -325,8 +325,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -419,8 +419,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -513,8 +513,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -607,8 +607,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -701,8 +701,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -795,8 +795,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -889,102 +889,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/Root
-        weight: 1
-      - path: Armature/Root/LegControl_L
-        weight: 1
-      - path: Armature/Root/LegControl_L/Foot_L
-        weight: 1
-      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
-        weight: 1
-      - path: Armature/Root/LegControl_R
-        weight: 1
-      - path: Armature/Root/LegControl_R/Foot_R
-        weight: 1
-      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
-        weight: 1
-      - path: Armature/Root/Torso
-        weight: 1
-      - path: Armature/Root/Torso/Chest
-        weight: 1
-      - path: Armature/Root/Torso/Chest/Neck
-        weight: 1
-      - path: Armature/Root/Torso/Chest/Neck/Head_0
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_L
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_R
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
-        weight: 1
-      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
-        weight: 1
-      - path: Armature/Root/Torso/UpperLeg_L
-        weight: 1
-      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
-        weight: 1
-      - path: Armature/Root/Torso/UpperLeg_R
-        weight: 1
-      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
-        weight: 1
-      - path: Body
-        weight: 0
-      - path: Head
-        weight: 0
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: TabletopStretch0
-      takeName: TabletopStretch
-      firstFrame: 0
-      lastFrame: 468
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
