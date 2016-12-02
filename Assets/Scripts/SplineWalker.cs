@@ -10,6 +10,7 @@ public class SplineWalker : MonoBehaviour {
     private bool m_walking;
     private float m_splinePos;
     public bool m_autoWalk = false;
+    public bool m_autoReset = false;
     public bool m_destroyAtEnd;
     public float m_walkSpeed; //Percent per second
     public bool m_controlYRotation = false;
@@ -66,7 +67,7 @@ public class SplineWalker : MonoBehaviour {
             {
                 Destroy(transform.gameObject);
             }
-            else
+            else if (m_autoReset)
             {
                 ResetSpline();
                 StartWalking();
