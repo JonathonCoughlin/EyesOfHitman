@@ -1157,7 +1157,7 @@ ModelImporter:
       name: MagicianStaticCrossed
       takeName: MagicianPoses
       firstFrame: 0
-      lastFrame: 0
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1251,7 +1251,7 @@ ModelImporter:
       name: MagicianStaticCrouch
       takeName: MagicianPoses
       firstFrame: 19
-      lastFrame: 19
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1345,7 +1345,7 @@ ModelImporter:
       name: MagicianStaticPerform
       takeName: MagicianPoses
       firstFrame: 39
-      lastFrame: 39
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1439,7 +1439,7 @@ ModelImporter:
       name: MagicianStaticTrick
       takeName: MagicianPoses
       firstFrame: 59
-      lastFrame: 59
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

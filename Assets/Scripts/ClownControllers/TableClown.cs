@@ -86,6 +86,7 @@ public class TableClown : MonoBehaviour {
         m_Animator.SetInteger("AnimationID", m_animationID);
         m_Animator.SetBool("Speaking", m_speaking);
         m_Animator.SetBool("WithDrink", m_drinking);
+        m_Animator.SetBool("Static", m_static);
     }
 
     private void SetAnimationFromKey()

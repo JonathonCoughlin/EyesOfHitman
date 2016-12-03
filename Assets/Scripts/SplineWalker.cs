@@ -1,6 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
+
+public class CameraSplinePoint
+{
+    public float m_percentPerSecond;
+    public bool m_newRotationTarget;
+    public GameObject m_rotationTarget;
+
+    public CameraSplinePoint(float pct, bool newTgt, GameObject tgt)
+    {
+        m_percentPerSecond = pct;
+        m_newRotationTarget = newTgt;
+        m_rotationTarget = tgt;
+    }
+
+}
 
 public class SplineWalker : MonoBehaviour {
 
@@ -16,9 +32,22 @@ public class SplineWalker : MonoBehaviour {
     public bool m_controlYRotation = false;
     public float m_yAngleOffset = 0f;
 
+    //Custom Speeds
+    public bool m_variableSpeed;
+    public List<CameraSplinePoint> m_cameraSplinePoints = new List<CameraSplinePoint>();
+    public List<float> percentagePerSecond = new List<float>();
+    public List<bool> setTarget = new List<bool>();
+    public List<GameObject> currentTarget = new List<GameObject>();
+
 	// Use this for initialization
 	void Start () {
         ResetSpline();
+
+        for (int ii = 0; ii < percentagePerSecond.Count; ii++ )
+        {
+            m_cameraSplinePoints.Add(new CameraSplinePoint(percentagePerSecond[ii], setTarget[ii], currentTarget[ii]));
+        }
+
 	}
 	
 	// Update is called once per frame
@@ -28,7 +57,14 @@ public class SplineWalker : MonoBehaviour {
             if (Input.GetKey(KeyCode.Space) || m_autoWalk) { StartWalking(); }
         } else
         {
-            WalkSpline(Time.deltaTime);
+            if (m_variableSpeed)
+            {
+                WalkSplineAtVariableSpeed(Time.deltaTime);
+            }
+            else
+            {
+                WalkSpline(Time.deltaTime);
+            }
         }
 	}
 
@@ -41,6 +77,40 @@ public class SplineWalker : MonoBehaviour {
     public void StartWalking()
     {
         m_walking = true;
+    }
+
+    private void WalkSplineAtVariableSpeed(float deltaTime)
+    {
+        int currentCurveIndex = Mathf.Min(m_Spline.CurveIDatPercentage(m_splinePos),m_cameraSplinePoints.Count-1);
+        float currentSpeed = m_cameraSplinePoints[currentCurveIndex].m_percentPerSecond;
+
+        if (m_splinePos < 1.0f)
+        {
+            m_splinePos += deltaTime * currentSpeed / 100f;
+            this.transform.position = m_Spline.GetPoint(m_splinePos, true);
+
+            if (m_cameraSplinePoints[currentCurveIndex].m_newRotationTarget)
+            {
+                transform.LookAt(m_cameraSplinePoints[currentCurveIndex].m_rotationTarget.transform);
+                Debug.Log("CurveIndex: " + currentCurveIndex);
+                Debug.Log("Spline Pct: " + m_splinePos);
+                Debug.Log("PctPerSec: " + m_cameraSplinePoints[currentCurveIndex].m_percentPerSecond);
+                Debug.Log("New Tgt: " + m_cameraSplinePoints[currentCurveIndex].m_newRotationTarget);
+                Debug.Log("TargetName:" + m_cameraSplinePoints[currentCurveIndex].m_rotationTarget.name);
+            }
+        }
+        else
+        {
+            if (m_destroyAtEnd)
+            {
+                Destroy(transform.gameObject);
+            }
+            else if (m_autoReset)
+            {
+                ResetSpline();
+                StartWalking();
+            }
+        }
     }
 
     private void WalkSpline(float deltaTime)
