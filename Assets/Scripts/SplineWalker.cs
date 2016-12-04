@@ -124,7 +124,6 @@ public class SplineWalker : MonoBehaviour {
                 {
                     float segmentPercentage = 100f / (m_Spline.CurveCount);
                     currentSpeed = segmentPercentage / m_cameraSplinePoints[currentCurveIndex].m_speedPerSegment;
-                    Debug.Log("speed: " + currentSpeed + "pct/s");
                     break;
                 }
         }
