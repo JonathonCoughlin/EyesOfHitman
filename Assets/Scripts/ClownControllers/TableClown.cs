@@ -168,6 +168,14 @@ public class TableClown : MonoBehaviour {
                     m_static = false;
                     break;
                 }
+            case ClownAnimations.Dance:
+                {
+                    m_animationID = 4;
+                    m_speaking = false;
+                    m_drinking = false;
+                    m_static = false;
+                    break;
+                }
             case ClownAnimations.SympatheticDrinking:
                 {
                     m_animationID = 0;
