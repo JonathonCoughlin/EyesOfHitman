@@ -53,6 +53,7 @@ public class HologramClown : MonoBehaviour {
                     m_HologramAnimator.SetBool("Open", true);
                     m_HologramAnimator.SetBool("Running", true);
                     m_ClownAnimator.SetBool("MachineOn", true);
+
                     break;
                 }
         }
