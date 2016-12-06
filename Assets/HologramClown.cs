@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public enum HoloClownStates { closed, opening, speaking };
+public enum HoloClownStates { closed, opening, speaking, paused };
 
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Animator))]
@@ -38,7 +38,8 @@ public class HologramClown : MonoBehaviour {
                 {
                     m_HologramAnimator.SetBool("Open", false);
                     m_HologramAnimator.SetBool("Running", false);
-                    m_ClownAnimator.SetBool("MachineOn", false);                      
+                    m_ClownAnimator.SetBool("MachineOn", false);
+                    m_ClownAnimator.SetBool("Speaking", false);
                     break;
                 }
             case HoloClownStates.opening:
@@ -46,6 +47,7 @@ public class HologramClown : MonoBehaviour {
                     m_HologramAnimator.SetBool("Open", true);
                     m_HologramAnimator.SetBool("Running", false);
                     m_ClownAnimator.SetBool("MachineOn", false);
+                    m_ClownAnimator.SetBool("Speaking", false);
                     break;
                 }
             case HoloClownStates.speaking:
@@ -53,7 +55,17 @@ public class HologramClown : MonoBehaviour {
                     m_HologramAnimator.SetBool("Open", true);
                     m_HologramAnimator.SetBool("Running", true);
                     m_ClownAnimator.SetBool("MachineOn", true);
-
+                    m_ClownAnimator.SetBool("Speaking", true);
+                    m_Voice.Play();
+                    break;
+                }
+            case HoloClownStates.paused:
+                {
+                    m_HologramAnimator.SetBool("Open", true);
+                    m_HologramAnimator.SetBool("Running", true);
+                    m_ClownAnimator.SetBool("MachineOn", true);
+                    m_ClownAnimator.SetBool("Speaking", false);
+                    m_Voice.Pause();
                     break;
                 }
         }
@@ -77,5 +89,29 @@ public class HologramClown : MonoBehaviour {
     {
         m_state = HoloClownStates.opening;
         AnimateState();
+    }
+
+    public void ClickMachine()
+    {
+        switch (m_state)
+        {
+            case HoloClownStates.closed: {
+                    m_state = HoloClownStates.opening;
+                    AnimateState();
+                    break;
+                }
+            case HoloClownStates.paused:
+                {
+                    m_state = HoloClownStates.speaking;
+                    AnimateState();
+                    break;
+                }
+            case HoloClownStates.speaking:
+                {
+                    m_state = HoloClownStates.paused;
+                    AnimateState();
+                    break;
+                }
+        }
     }
 }
