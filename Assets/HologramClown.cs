@@ -15,6 +15,10 @@ public class HologramClown : MonoBehaviour {
     private Animator m_ClownAnimator;
     public GameObject m_HologramMachine;
 
+    //PauseMenu Integration
+    private PauseMenu m_PauseMenu;
+    private bool m_PausedForMenu = false;
+
     public HoloClownStates m_state;        
 
 	// Use this for initialization
@@ -28,6 +32,7 @@ public class HologramClown : MonoBehaviour {
         m_Voice = GetComponent<AudioSource>();
         m_ClownAnimator = GetComponent<Animator>();
         m_HologramAnimator = m_HologramMachine.GetComponent<Animator>();
+        m_PauseMenu = FindObjectOfType<PauseMenu>();
     }
 
     private void AnimateState()
@@ -77,13 +82,19 @@ public class HologramClown : MonoBehaviour {
         {
             //is opening animation finished?
             if (m_HologramAnimator.GetCurrentAnimatorStateInfo(0).IsName("Open")) { m_state = HoloClownStates.speaking; AnimateState(); }
+        } else if (m_state == HoloClownStates.speaking && m_PauseMenu.CheckPaused() && !m_PausedForMenu)
+        {
+            m_state = HoloClownStates.paused;
+            AnimateState();
+            m_PausedForMenu = true;
+        } else if (m_PausedForMenu && !m_PauseMenu.CheckPaused())
+        {
+            m_state = HoloClownStates.speaking;
+            AnimateState();
+            m_PausedForMenu = false;
         }
+        
 	}
-
-    public void FixedUpdate()
-    {
-        if (Input.GetKey(KeyCode.Space)) { OpenMachine(); }
-    }
 
     public void OpenMachine()
     {

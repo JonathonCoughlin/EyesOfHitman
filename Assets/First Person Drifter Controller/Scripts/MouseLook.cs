@@ -36,6 +36,10 @@ public class MouseLook : MonoBehaviour
 	float rotAverageY = 0F;
  
 	public float framesOfSmoothing = 5;
+
+    //Modifications for Blendo Cut
+    private bool triggerBlendoCut = false;
+    private Vector3 blendoAngles;
  
 	Quaternion originalRotation;
 	
@@ -51,56 +55,81 @@ public class MouseLook : MonoBehaviour
  
 	void Update ()
 	{
-		if (axes == RotationAxes.MouseX)
-		{			
-			rotAverageX = 0f;
- 
-			rotationX += Input.GetAxis("Mouse X") * sensitivityX * Time.timeScale;
- 
-			rotArrayX.Add(rotationX);
- 
-			if (rotArrayX.Count >= framesOfSmoothing)
-			{
-				rotArrayX.RemoveAt(0);
-			}
-			for(int i = 0; i < rotArrayX.Count; i++)
-			{
-				rotAverageX += rotArrayX[i];
-			}
-			rotAverageX /= rotArrayX.Count;
-			rotAverageX = ClampAngle(rotAverageX, minimumX, maximumX);
- 
-			Quaternion xQuaternion = Quaternion.AngleAxis (rotAverageX, Vector3.up);
-			transform.localRotation = originalRotation * xQuaternion;			
-		}
-		else
-		{			
-			rotAverageY = 0f;
- 
- 			float invertFlag = 1f;
- 			if( invertY )
- 			{
- 				invertFlag = -1f;
- 			}
-			rotationY += Input.GetAxis("Mouse Y") * sensitivityY * invertFlag * Time.timeScale;
-			
-			rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
- 	
-			rotArrayY.Add(rotationY);
- 
-			if (rotArrayY.Count >= framesOfSmoothing)
-			{
-				rotArrayY.RemoveAt(0);
-			}
-			for(int j = 0; j < rotArrayY.Count; j++)
-			{
-				rotAverageY += rotArrayY[j];
-			}
-			rotAverageY /= rotArrayY.Count;
- 
-			Quaternion yQuaternion = Quaternion.AngleAxis (rotAverageY, Vector3.left);
-			transform.localRotation = originalRotation * yQuaternion;
-		}
+        if (triggerBlendoCut)
+        {
+            if (axes == RotationAxes.MouseX)
+            {
+                //Get difference between new and original orientation
+                Vector3 diffAngles = blendoAngles - originalRotation.eulerAngles;
+                //Reset angle movement history
+                rotArrayX = new List<float>();
+                rotationX = diffAngles.y;
+                rotArrayX.Add(rotationX);
+                Quaternion xQuaternion = Quaternion.AngleAxis(rotArrayX[0], Vector3.up);
+                transform.localRotation = originalRotation * xQuaternion;
+                triggerBlendoCut = false;
+            } else
+            {
+                //Get difference between new and original orientation
+                Vector3 diffAngles = blendoAngles - originalRotation.eulerAngles;
+                //Reset angle movement history
+                rotArrayY = new List<float>();
+                rotationY = -diffAngles.x;
+                rotArrayY.Add(rotationY);
+                Quaternion yQuaternion = Quaternion.AngleAxis(rotArrayY[0], Vector3.left);
+                transform.localRotation = originalRotation * yQuaternion;
+                triggerBlendoCut = false;
+            }
+        }
+        else {
+            if (axes == RotationAxes.MouseX)
+            {
+                rotAverageX = 0f;
+
+                rotationX += Input.GetAxis("Mouse X") * sensitivityX * Time.timeScale;
+                rotArrayX.Add(rotationX);
+
+                if (rotArrayX.Count >= framesOfSmoothing)
+                {
+                    rotArrayX.RemoveAt(0);
+                }
+                for (int i = 0; i < rotArrayX.Count; i++)
+                {
+                    rotAverageX += rotArrayX[i];
+                }
+                rotAverageX /= rotArrayX.Count;
+                rotAverageX = ClampAngle(rotAverageX, minimumX, maximumX);
+
+                Quaternion xQuaternion = Quaternion.AngleAxis(rotAverageX, Vector3.up);
+                transform.localRotation = originalRotation * xQuaternion;
+            }
+            else
+            {
+                rotAverageY = 0f;
+
+                float invertFlag = 1f;
+                if (invertY)
+                {
+                    invertFlag = -1f;
+                }
+                rotationY += Input.GetAxis("Mouse Y") * sensitivityY * invertFlag * Time.timeScale;
+                rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+                rotArrayY.Add(rotationY);
+
+                if (rotArrayY.Count >= framesOfSmoothing)
+                {
+                    rotArrayY.RemoveAt(0);
+                }
+                for (int j = 0; j < rotArrayY.Count; j++)
+                {
+                    rotAverageY += rotArrayY[j];
+                }
+                rotAverageY /= rotArrayY.Count;
+
+                Quaternion yQuaternion = Quaternion.AngleAxis(rotAverageY, Vector3.left);
+                transform.localRotation = originalRotation * yQuaternion;
+            }
+        }
 	}
 	
 	public void SetSensitivity(float s)
@@ -108,6 +137,12 @@ public class MouseLook : MonoBehaviour
 		sensitivityX = s;
 		sensitivityY = s;
 	}
+
+    public void TriggerBlendoCut(Vector3 eulerAngles)
+    {
+        triggerBlendoCut = true;
+        blendoAngles = eulerAngles;
+    }
  
 	public static float ClampAngle (float angle, float min, float max)
 	{

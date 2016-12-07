@@ -327,4 +327,9 @@ public class PauseMenu : MonoBehaviour
 		sliderWidth = Screen.width / 6;
 		sliderHeight = Screen.height / 12;
 	}
+
+    public bool CheckPaused()
+    {
+        return paused;
+    }
 }

@@ -33,7 +33,8 @@ public class BlendoCut : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.transform.position = m_SpawnTarget.transform.position;
-            other.gameObject.transform.rotation = m_SpawnTarget.transform.rotation;
+            other.gameObject.GetComponent<MouseLook>().TriggerBlendoCut(m_SpawnTarget.transform.rotation.eulerAngles);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseLook>().TriggerBlendoCut(m_SpawnTarget.transform.rotation.eulerAngles);
         }
     }
 }
