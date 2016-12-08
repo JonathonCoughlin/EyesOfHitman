@@ -1,15 +1,27 @@
 fileFormatVersion: 2
-guid: 3e30d6e577401ab4497e739ac1e2c3dd
-timeCreated: 1480125588
+guid: 6ee9312430ffd1b4290dad30f9c835c6
+timeCreated: 1481151358
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cylinder
+    100000: AccentParts
+    100002: Body
+    100004: //RootNode
+    100006: Eyes
+    400000: AccentParts
+    400002: Body
+    400004: //RootNode
+    400006: Eyes
+    2300000: AccentParts
+    2300002: Body
+    2300004: Eyes
+    3300000: AccentParts
+    3300002: Body
+    3300004: Eyes
+    4300000: AccentParts
+    4300002: Eyes
+    4300004: Body
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -36,7 +48,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.78
+    globalScale: 0.2
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
