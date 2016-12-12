@@ -34,9 +34,7 @@ public class ConversationTable : MonoBehaviour
     private void SetSpeakingClown()
     {
         m_Speaker.SilenceMe();
-
-        m_Speaker.m_Story = m_speakerMonologue;
-        m_Speaker.m_AnimationStateOverride = m_speakerAnimation;
+        m_Speaker.SetMyStates(m_speakerAnimation, m_speakerMonologue, m_secondsBetweenMonologues);
     }
 
     // Update is called once per frame

@@ -41,11 +41,11 @@ public class SpeakingClown : MonoBehaviour {
 	
 
 
-    public void SetMyStates(ClownAnimations myAnimation, AudioClip myMonologue)
+    public void SetMyStates(ClownAnimations myAnimation, AudioClip myMonologue, float restartDelay)
     {
         m_AnimationStateOverride = myAnimation;
         m_Story = myMonologue;
-
+        m_resetDelay = restartDelay;
     }
 
 	// Update is called once per frame
