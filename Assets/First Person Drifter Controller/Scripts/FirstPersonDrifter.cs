@@ -52,6 +52,9 @@ public class FirstPersonDrifter: MonoBehaviour
     private Vector3 contactPoint;
     private bool playerControl = false;
     private int jumpTimer;
+
+    // -JAC- Upgrade to work with character animation
+    public bool walking { get; private set; }
  
     void Start()
     {
@@ -61,6 +64,7 @@ public class FirstPersonDrifter: MonoBehaviour
         rayDistance = controller.height * .5f + controller.radius;
         slideLimit = controller.slopeLimit - .1f;
         jumpTimer = antiBunnyHopFactor;
+        walking = false;
     }
  
     void FixedUpdate() {
@@ -140,6 +144,8 @@ public class FirstPersonDrifter: MonoBehaviour
  
         // Move the controller, and set grounded true or false depending on whether we're standing on something
         grounded = (controller.Move(moveDirection * Time.deltaTime) & CollisionFlags.Below) != 0;
+
+        walking = grounded && (inputX != 0 || inputY != 0);
     }
  
     // Store point that we're in contact with for use in FixedUpdate if needed
