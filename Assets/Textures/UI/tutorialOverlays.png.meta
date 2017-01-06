@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: a4f9949ddf1a598428551a63f19bda8b
+timeCreated: 1483639833
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: tutorialOverlays_0
+    21300002: tutorialOverlays_1
+    21300004: tutorialOverlays_2
+    21300006: tutorialOverlays_3
+    21300008: tutorialOverlays_4
+    21300010: tutorialOverlays_5
+    21300012: tutorialOverlays_6
+    21300014: tutorialOverlays_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: tutorialOverlays_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 422
+        width: 67
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.5, y: 43}
+        - {x: -33.5, y: -43}
+        - {x: 33.5, y: -43}
+        - {x: 33.5, y: 43}
+    - name: tutorialOverlays_1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 367
+        width: 83
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41.5, y: 22.5}
+        - {x: -41.5, y: -22.5}
+        - {x: 41.5, y: -22.5}
+        - {x: 41.5, y: 22.5}
+    - name: tutorialOverlays_2
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 266
+        width: 56
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 45}
+        - {x: -28, y: -45}
+        - {x: 28, y: -45}
+        - {x: 28, y: 45}
+    - name: tutorialOverlays_3
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 214
+        width: 80
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 22.5}
+        - {x: -40, y: -22.5}
+        - {x: 40, y: -22.5}
+        - {x: 40, y: 22.5}
+    - name: tutorialOverlays_4
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 105
+        width: 111
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -55.5, y: 41.5}
+        - {x: -55.5, y: -41.5}
+        - {x: 55.5, y: -41.5}
+        - {x: 55.5, y: 41.5}
+    - name: tutorialOverlays_5
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 0
+        width: 143
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71.5, y: 45.5}
+        - {x: -71.5, y: -45.5}
+        - {x: 71.5, y: -45.5}
+        - {x: 71.5, y: 45.5}
+    - name: tutorialOverlays_6
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 369
+        width: 89
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44.5, y: 66}
+        - {x: -44.5, y: -66}
+        - {x: 44.5, y: -66}
+        - {x: 44.5, y: 66}
+    - name: tutorialOverlays_7
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 359
+        width: 116
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58, y: 71.5}
+        - {x: -58, y: -71.5}
+        - {x: 58, y: -71.5}
+        - {x: 58, y: 71.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
