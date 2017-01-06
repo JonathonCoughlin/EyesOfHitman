@@ -8,13 +8,14 @@ public class FPClownController : MonoBehaviour {
     public Animator m_Animator;
 
     //Prop Holding Stuff
-    public bool holdingProp { get; private set; }
+    public bool m_holdingProp { get; private set; }
+    private GameObject m_prop;
     public GameObject handBone;
 
 	// Use this for initialization
 	void Start () {
         SetComponents();
-        holdingProp = false;
+        m_holdingProp = false;
 	}
 	
     private void SetComponents()
@@ -25,7 +26,7 @@ public class FPClownController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         ManageWalkAnimation();
-        if (holdingProp) ManageProp();
+        if (m_holdingProp) ManageProp();
 	}
 
     private void ManageWalkAnimation()
@@ -35,12 +36,27 @@ public class FPClownController : MonoBehaviour {
 
     private void ManageProp()
     {
-
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            m_Animator.SetTrigger("AdjustHold");
+        }
     }
 
     public void GrabProp(GameObject prop)
     {
-        holdingProp = true;
+        m_holdingProp = true;
+        m_prop = prop;
+        m_Animator.SetTrigger("Grab");
+        if (prop.tag == "axe")
+        {
+            m_Animator.SetBool("HoldingObject", true);
+            m_Animator.SetBool("HoldingAxe", true);
+        }
+        else
+        {
+            m_Animator.SetBool("HoldingObject", true);
+            m_Animator.SetBool("HoldingAxe", false);
+        }
     }
 
     private void ThrowProp()
