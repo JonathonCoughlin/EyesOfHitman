@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using JonClickSystem;
 
 [RequireComponent(typeof(FirstPersonDrifter))]
 public class FPClownController : MonoBehaviour {
@@ -9,8 +10,9 @@ public class FPClownController : MonoBehaviour {
 
     //Prop Holding Stuff
     public bool m_holdingProp { get; private set; }
-    private GameObject m_prop;
+    private HoldablePropClickEvents m_prop;
     public GameObject handBone;
+    public GrabPropHelper m_PropHelper;
 
 	// Use this for initialization
 	void Start () {
@@ -38,14 +40,26 @@ public class FPClownController : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            m_Animator.SetTrigger("AdjustHold");
+            if (m_prop.m_throwable)
+            {
+                if (m_prop.m_held)
+                {
+                    m_Animator.SetTrigger("Throw");
+                }
+                
+
+            } else
+            {
+                m_Animator.SetTrigger("AdjustHold");
+            }
         }
     }
 
     public void GrabProp(GameObject prop)
     {
         m_holdingProp = true;
-        m_prop = prop;
+        m_prop = prop.GetComponent<HoldablePropClickEvents>();
+        m_PropHelper.m_prop = prop.GetComponent<HoldablePropClickEvents>();
         m_Animator.SetTrigger("Grab");
         if (prop.tag == "axe")
         {
@@ -58,6 +72,7 @@ public class FPClownController : MonoBehaviour {
             m_Animator.SetBool("HoldingAxe", false);
         }
     }
+    
 
     private void ThrowProp()
     {
