@@ -19,6 +19,7 @@ namespace JonClickSystem
 
         //Components
         private FPClownController player;
+        private Collider m_collider;
 
         void Start()
         {
@@ -36,6 +37,17 @@ namespace JonClickSystem
         private void SetComponents()
         {
             player = (FPClownController) FindObjectOfType(typeof(FPClownController));
+            m_collider = GetComponent<Collider>();
+        }
+
+        void OnTriggerEnter(Collider hitMe)
+        {
+            if (m_flying)
+            {
+                transform.parent = hitMe.gameObject.transform;
+                m_flying = false;
+            }
+
         }
 
         public override void RegisterClick(ClickableObjectComponent wasClicked)
