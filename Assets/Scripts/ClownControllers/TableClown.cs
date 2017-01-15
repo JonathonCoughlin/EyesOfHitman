@@ -17,7 +17,8 @@ public enum ClownAnimations
     MagicianStaticFolded,
     MagicianStaticCrouch,
     MagicianStaticTrick,
-    BlenderImport
+    BlenderImport,
+    BoatDriver
 };
 
 [RequireComponent(typeof(Animator))]
@@ -28,6 +29,7 @@ public class TableClown : MonoBehaviour {
     public bool speakingCommand;
     public bool drinkingCommand;
     public bool staticCommand;
+    public bool sittingCommand;
 
     //Overrides
     public bool m_overrideAnimation;
@@ -38,6 +40,7 @@ public class TableClown : MonoBehaviour {
     private bool m_speaking;
     private bool m_drinking;
     private bool m_static;
+    private bool m_sitting;
 
     //Components
     private Animator m_Animator;
@@ -60,7 +63,8 @@ public class TableClown : MonoBehaviour {
         bool speakingChange = (m_speaking == speakingCommand);
         bool drinkingChange = (m_drinking == drinkingCommand);
         bool staticChange = (m_static == staticCommand);
-        bool animationChange = animationIDChange || speakingChange || drinkingChange || staticChange;
+        bool sittingChange = (m_sitting == sittingCommand);
+        bool animationChange = animationIDChange || speakingChange || drinkingChange || staticChange || sittingChange;
 
 	    if (animationChange) { UpdateAnimation(); }
 	}
@@ -87,6 +91,7 @@ public class TableClown : MonoBehaviour {
         m_Animator.SetBool("Speaking", m_speaking);
         m_Animator.SetBool("WithDrink", m_drinking);
         m_Animator.SetBool("Static", m_static);
+        m_Animator.SetBool("Sitting", m_sitting);
     }
 
     private void SetAnimationFromKey()
@@ -190,6 +195,16 @@ public class TableClown : MonoBehaviour {
                     m_speaking = false;
                     m_drinking = true;
                     m_static = false;
+                    break;
+                }
+
+            case ClownAnimations.BoatDriver:
+                {
+                    m_sitting = true;
+                    m_speaking = false;
+                    m_drinking = false;
+                    m_static = false;
+                    m_animationID = 1;
                     break;
                 }
 

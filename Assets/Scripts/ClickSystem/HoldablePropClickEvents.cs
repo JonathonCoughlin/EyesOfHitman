@@ -3,14 +3,15 @@ using System.Collections.Generic;
 
 namespace JonClickSystem
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class HoldablePropClickEvents : ClickEventManager
     {
 
         public Vector3 m_handBonePosOffset;
         public Vector3 m_handBoneEulerOffset;
 
-        public bool m_throwable;
         public float m_throwSpeed;
+        public bool m_throwable = true;
 
         private Vector3 m_throwDirection;
         private bool m_flying = false;
@@ -29,25 +30,16 @@ namespace JonClickSystem
 
         void Update()
         {
-            if (m_flying) {
+            if (m_flying)
+            {
                 transform.position += m_throwDirection.normalized * m_throwSpeed * Time.deltaTime;
             }
         }
 
         private void SetComponents()
         {
-            player = (FPClownController) FindObjectOfType(typeof(FPClownController));
+            player = (FPClownController)FindObjectOfType(typeof(FPClownController));
             m_collider = GetComponent<Collider>();
-        }
-
-        void OnTriggerEnter(Collider hitMe)
-        {
-            if (m_flying)
-            {
-                transform.parent = hitMe.gameObject.transform;
-                m_flying = false;
-            }
-
         }
 
         public override void RegisterClick(ClickableObjectComponent wasClicked)
@@ -73,12 +65,23 @@ namespace JonClickSystem
             m_held = true;
         }
 
+        //Throw Stuff
+        void OnTriggerEnter(Collider hitMe)
+        {
+            if (m_flying)
+            {
+                transform.parent = hitMe.gameObject.transform;
+                m_flying = false;
+            }
+
+        }
+
         public void ThrowMe(Vector3 throwVector)
         {
             m_throwDirection = throwVector;
             m_flying = true;
             this.transform.parent = null;
         }
-        
+
     }
 }
