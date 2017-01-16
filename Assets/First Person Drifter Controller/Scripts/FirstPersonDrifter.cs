@@ -5,6 +5,9 @@
 using UnityEngine;
 using System.Collections;
 
+public enum LookControlLimits { FullControl, HorizontalOnly, VerticalOnly, NoControl}
+public enum WalkControlLimits { FullControl, AxialOnly, LateralOnly, NoWalk}
+
 [RequireComponent (typeof (CharacterController))]
 public class FirstPersonDrifter: MonoBehaviour
 {
@@ -55,6 +58,15 @@ public class FirstPersonDrifter: MonoBehaviour
 
     // -JAC- Upgrade to work with character animation
     public bool walking { get; private set; }
+    public GameObject HeadBone;
+    public Camera fpCamera;
+    public LookControlLimits lookControlLimit = LookControlLimits.FullControl;
+    public WalkControlLimits walkControlLimit = WalkControlLimits.FullControl;
+    public MouseLook horizontalMouseLook;
+    public MouseLook verticalMouseLook;
+    private HeadBob headBobScript;
+    
+
  
     void Start()
     {
@@ -65,11 +77,98 @@ public class FirstPersonDrifter: MonoBehaviour
         slideLimit = controller.slopeLimit - .1f;
         jumpTimer = antiBunnyHopFactor;
         walking = false;
+        headBobScript = fpCamera.gameObject.GetComponent<HeadBob>();
+    } 
+
+    public void SwitchControlTypes(WalkControlLimits walkControl, LookControlLimits lookControl)
+    {
+        walkControlLimit = walkControl;
+        lookControlLimit = lookControl;
+        SetLookControls();
+    }
+
+    public void SetMainCamera()
+    {
+        fpCamera.enabled = true;
+        fpCamera.tag = "MainCamera";
+    }
+
+    private void SetLookControls()
+    {
+        switch (lookControlLimit)
+        {
+            case LookControlLimits.FullControl:
+                {
+                    horizontalMouseLook.minimumX = -360f;
+                    horizontalMouseLook.maximumX = 360f;
+                    verticalMouseLook.minimumY = -85f;
+                    verticalMouseLook.maximumY = 85f;
+                    fpCamera.transform.parent = this.transform;
+                    headBobScript.enabled = true;
+                    break;
+                }
+            case LookControlLimits.HorizontalOnly:
+                {
+                    horizontalMouseLook.minimumX = -360f;
+                    horizontalMouseLook.maximumX = 360f;
+                    verticalMouseLook.minimumY = 0f;
+                    verticalMouseLook.maximumY = 0f;
+                    headBobScript.enabled = false;
+                    fpCamera.transform.parent = HeadBone.transform;
+                    
+                    break;
+                }
+            case LookControlLimits.VerticalOnly:
+                {
+                    horizontalMouseLook.minimumX = 0f;
+                    horizontalMouseLook.maximumX = 0f;
+                    verticalMouseLook.minimumY = -85f;
+                    verticalMouseLook.maximumY = 85f;
+                    headBobScript.enabled = false;
+                    fpCamera.transform.parent = HeadBone.transform;
+                    
+                    break;
+                }
+            case LookControlLimits.NoControl:
+                {
+                    horizontalMouseLook.minimumX = 0f;
+                    horizontalMouseLook.maximumX = 0f;
+                    verticalMouseLook.minimumY = 0f;
+                    verticalMouseLook.maximumY = 0f;
+                    headBobScript.enabled = false;
+                    fpCamera.transform.parent = HeadBone.transform;
+                    break;
+                }
+        }
     }
  
     void FixedUpdate() {
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
+
+        //JAC Updates - Limit Control
+        float inputX = 0f;
+        float inputY = 0f;
+
+        switch (walkControlLimit)
+        {
+            case WalkControlLimits.FullControl:
+                {
+                    inputX = Input.GetAxis("Horizontal");
+                    inputY = Input.GetAxis("Vertical");
+                    break;
+                }
+            case WalkControlLimits.AxialOnly:
+                {
+                    inputY = Input.GetAxis("Vertical");
+                    break;
+                }
+            case WalkControlLimits.LateralOnly:
+                {
+                    inputX = Input.GetAxis("Horizontal");
+                    break;
+                }
+        }
+        
+        
         // If both horizontal and vertical are used simultaneously, limit speed (if allowed), so the total doesn't exceed normal move speed
         float inputModifyFactor = (inputX != 0.0f && inputY != 0.0f && limitDiagonalSpeed)? .7071f : 1.0f;
  

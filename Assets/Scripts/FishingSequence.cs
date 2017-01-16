@@ -21,6 +21,8 @@ public class FishingSequence : MonoBehaviour {
     //47 Sequence
     public SplineWalker hitmanBoatWalker;
     public AudioSource titleMusic;
+    public FirstPersonDrifter fp47;
+    public Fishing47 fishing47;
 
     //Title
     public GameObject titleText;
@@ -30,7 +32,7 @@ public class FishingSequence : MonoBehaviour {
     // Use this for initialization
 	void Start () {
         SetComponents();
-        KillAllCameras();
+        
 	}
 	
     private void SetComponents()
@@ -42,7 +44,10 @@ public class FishingSequence : MonoBehaviour {
     private void KillAllCameras()
     {
         Camera[] allCameras = FindObjectsOfType(typeof(Camera)) as Camera[];
-        
+        for (int ii = 0; ii < allCameras.Length; ii++)
+        {
+            allCameras[ii].enabled = false;
+        }
     }
 
 	// Update is called once per frame
@@ -57,6 +62,7 @@ public class FishingSequence : MonoBehaviour {
 
     private void BeginSequence()
     {
+        KillAllCameras();
         cameraTarget.StartWalking();
         camWalker.StartWalking();
         descendingCamera.enabled = true;
@@ -104,6 +110,8 @@ public class FishingSequence : MonoBehaviour {
 
     public void GoFirstPerson()
     {
+        KillAllCameras();
+        fishing47.ActivateFPControl();
 
     }
 }

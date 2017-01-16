@@ -45,7 +45,11 @@ public class SpeakingClown : MonoBehaviour {
     {
         m_AnimationStateOverride = myAnimation;
         m_Story = myMonologue;
-        m_Voice.clip = m_Story;
+        if (m_Voice != null)
+        {
+            m_Voice.clip = m_Story;
+        }
+        
         m_resetDelay = restartDelay;
     }
 

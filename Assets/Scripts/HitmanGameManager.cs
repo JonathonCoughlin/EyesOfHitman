@@ -10,9 +10,12 @@ public class HitmanGameManager : MonoBehaviour {
     public GameState m_GameState;
     private bool m_GameBegun = false;
 
+    //Player
+    public FirstPersonDrifter m_Player;
 
     //Sequences
     public FishingSequence m_FishingSequence;
+    public RedCarpetSequence m_RedCarpetSequence;
 
 	// Use this for initialization
 	void Start () {
