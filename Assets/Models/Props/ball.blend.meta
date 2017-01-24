@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 21d13f5bfa94db946adf371eef156025
-timeCreated: 1480775852
+guid: 4e4a4721434ccb3408c93ad313810bb0
+timeCreated: 1485065810
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cylinder
+    4300000: Icosphere
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -19,7 +19,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleCurves: 1
+    resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 

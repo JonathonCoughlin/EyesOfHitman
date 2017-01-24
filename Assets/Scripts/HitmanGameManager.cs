@@ -16,6 +16,7 @@ public class HitmanGameManager : MonoBehaviour {
     //Sequences
     public FishingSequence m_FishingSequence;
     public RedCarpetSequence m_RedCarpetSequence;
+    public AssassinationSequence m_AssassinationSequence;
 
 	// Use this for initialization
 	void Start () {
@@ -43,7 +44,7 @@ public class HitmanGameManager : MonoBehaviour {
 
             case GameState.RedCarpet:
                 {
-
+                    m_RedCarpetSequence.StartRedCarpetSequence();
                     break;
                 }
 
@@ -61,7 +62,7 @@ public class HitmanGameManager : MonoBehaviour {
 
             case GameState.Assassination:
                 {
-
+                    m_AssassinationSequence.Animate();
                     break;
                 }
 
@@ -73,5 +74,12 @@ public class HitmanGameManager : MonoBehaviour {
         }
     }
 
-
+    public static void KillAllCameras()
+    {
+        Camera[] allCameras = FindObjectsOfType(typeof(Camera)) as Camera[];
+        for (int ii = 0; ii < allCameras.Length; ii++)
+        {
+            allCameras[ii].enabled = false;
+        }
+    }
 }

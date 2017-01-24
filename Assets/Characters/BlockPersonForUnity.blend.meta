@@ -110,6 +110,16 @@ ModelImporter:
     7400068: FishingFP
     7400070: FishingFPtossBack
     7400072: FishingFP0
+    7400074: Cycling
+    7400076: StatuePoses_Thinker
+    7400078: StatuePoses_Magician
+    7400080: StatuePoses_Juggler
+    7400082: StatuePoses_Yoga
+    7400084: StatuePoses_gregarious
+    7400086: StatuePoses_tamer
+    7400088: StatuePoses_cardman
+    7400090: StatuePoses_sad
+    7400092: Lippy_Performance0
     9500000: //RootNode
     13700000: Body
     13700002: Head
@@ -3369,6 +3379,963 @@ ModelImporter:
       takeName: FishingFP
       firstFrame: -1
       lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Root/Torso
+        weight: 1
+      - path: Armature/Root/Torso/Chest
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck/Head_0
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Body
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Cycling
+      takeName: Cycling
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves:
+      - name: Curve
+        curve:
+          serializedVersion: 2
+          curve:
+          - time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 0
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Root/Torso
+        weight: 1
+      - path: Armature/Root/Torso/Chest
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck/Head_0
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Body
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: StatuePoses_Thinker
+      takeName: StatuePoses
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Root/Torso
+        weight: 1
+      - path: Armature/Root/Torso/Chest
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck/Head_0
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Body
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: StatuePoses_Magician
+      takeName: StatuePoses
+      firstFrame: 10
+      lastFrame: 11
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Root/Torso
+        weight: 1
+      - path: Armature/Root/Torso/Chest
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck/Head_0
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Body
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: StatuePoses_Juggler
+      takeName: StatuePoses
+      firstFrame: 20
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Root/Torso
+        weight: 1
+      - path: Armature/Root/Torso/Chest
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck/Head_0
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Body
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: StatuePoses_Yoga
+      takeName: StatuePoses
+      firstFrame: 30
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Root/Torso
+        weight: 1
+      - path: Armature/Root/Torso/Chest
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck/Head_0
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Body
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: StatuePoses_gregarious
+      takeName: StatuePoses
+      firstFrame: 40
+      lastFrame: 41
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Root/Torso
+        weight: 1
+      - path: Armature/Root/Torso/Chest
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck/Head_0
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Body
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: StatuePoses_tamer
+      takeName: StatuePoses
+      firstFrame: 50
+      lastFrame: 51
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Root/Torso
+        weight: 1
+      - path: Armature/Root/Torso/Chest
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck/Head_0
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Body
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: StatuePoses_cardman
+      takeName: StatuePoses
+      firstFrame: 60
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Root/Torso
+        weight: 1
+      - path: Armature/Root/Torso/Chest
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck/Head_0
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Body
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: StatuePoses_sad
+      takeName: StatuePoses
+      firstFrame: 69
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/Foot_L/Toes_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/Foot_R/Toes_R
+        weight: 1
+      - path: Armature/Root/Torso
+        weight: 1
+      - path: Armature/Root/Torso/Chest
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck
+        weight: 1
+      - path: Armature/Root/Torso/Chest/Neck/Head_0
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Fingers01_L/Fingers02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_L/LowerArm_L/Hand_L/Thumb01_L/Thumb02_L
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Fingers01_R/Fingers02_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R
+        weight: 1
+      - path: Armature/Root/Torso/Chest/UpperArm_R/LowerArm_R/Hand_R/Thumb01_R/Thumb02_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_L/LowerLeg_L
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R
+        weight: 1
+      - path: Armature/Root/Torso/UpperLeg_R/LowerLeg_R
+        weight: 1
+      - path: Body
+        weight: 0
+      - path: Head
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Lippy_Performance0
+      takeName: Lippy_Performance
+      firstFrame: 0
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

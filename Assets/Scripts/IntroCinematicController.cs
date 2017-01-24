@@ -8,7 +8,11 @@ public class IntroCinematicController : MonoBehaviour {
     private SplineWalker m_SplineWalker;
     private AudioSource m_AudioSource;
 
-     
+    //LippyText
+    public SplineWalker LippyBackground;
+    public SplineWalker AdolfTxt;
+    public SplineWalker akaTxt;
+    public SplineWalker LippyTxt;
 
 	// Use this for initialization
 	void Start () {
@@ -47,4 +51,25 @@ public class IntroCinematicController : MonoBehaviour {
         Debug.Log("Scene Loading");
         SceneManager.LoadScene(1,LoadSceneMode.Single);
     }
+
+    public void WalkLippyBkgrd()
+    {
+        LippyBackground.StartWalking();
+    }
+
+    public void WalkAdolf()
+    {
+        AdolfTxt.StartWalking();
+    }
+
+    public void WalkAka()
+    {
+        akaTxt.StartWalking();
+    }
+
+    public void WalkLippy()
+    {
+        LippyTxt.StartWalking();
+    }
+
 }

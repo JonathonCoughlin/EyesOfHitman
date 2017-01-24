@@ -41,16 +41,7 @@ public class FishingSequence : MonoBehaviour {
         m_animator = GetComponent<Animator>();
     }
 
-    private void KillAllCameras()
-    {
-        Camera[] allCameras = FindObjectsOfType(typeof(Camera)) as Camera[];
-        for (int ii = 0; ii < allCameras.Length; ii++)
-        {
-            allCameras[ii].enabled = false;
-        }
-    }
-
-	// Update is called once per frame
+    // Update is called once per frame
 	void Update () {
 	
 	}
@@ -62,7 +53,7 @@ public class FishingSequence : MonoBehaviour {
 
     private void BeginSequence()
     {
-        KillAllCameras();
+        HitmanGameManager.KillAllCameras();
         cameraTarget.StartWalking();
         camWalker.StartWalking();
         descendingCamera.enabled = true;
@@ -110,7 +101,7 @@ public class FishingSequence : MonoBehaviour {
 
     public void GoFirstPerson()
     {
-        KillAllCameras();
+        HitmanGameManager.KillAllCameras();
         fishing47.ActivateFPControl();
 
     }

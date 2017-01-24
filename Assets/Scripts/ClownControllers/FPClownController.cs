@@ -14,6 +14,9 @@ public class FPClownController : MonoBehaviour {
     public GameObject handBone;
     public GrabPropHelper m_PropHelper;
 
+    //Player Control
+    private bool m_playerControl = false;
+
 	// Use this for initialization
 	void Start () {
         SetComponents();
@@ -25,8 +28,15 @@ public class FPClownController : MonoBehaviour {
         m_Drifter = GetComponent<FirstPersonDrifter>();
     }
 
-	// Update is called once per frame
-	void Update () {
+    public void ActivateFPControl()
+    {
+        m_Drifter.SetMainCamera();
+        m_Drifter.SwitchControlTypes(WalkControlLimits.FullControl, LookControlLimits.FullControl);
+        m_playerControl = true;
+    }
+
+    // Update is called once per frame
+    void Update () {
         ManageWalkAnimation();
         if (m_holdingProp) ManageProp();
 	}

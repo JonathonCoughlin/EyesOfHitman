@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: d67b7ee369328074cb9ad71bab9a4927
+timeCreated: 1484974202
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Bone_001
+    100006: Bone_002
+    100008: //RootNode
+    100010: unicycle
+    100012: unicycle_seatPost
+    100014: unicycle_seatPost_saddle
+    100016: unicycle_wheel
+    100018: unicycle_wheel_leftCrank
+    100020: unicycle_wheel_leftCrank_leftPedal
+    100022: unicycle_wheel_rightCrank
+    100024: unicycle_wheel_rightCrank_rightPedal
+    100026: unicycle_wheel_spokes
+    100028: unicycle_wheel_spokes_rim
+    100030: unicycle_wheel_spokes_rim_tyre
+    400000: Armature
+    400002: Bone
+    400004: Bone_001
+    400006: Bone_002
+    400008: //RootNode
+    400010: unicycle
+    400012: unicycle_seatPost
+    400014: unicycle_seatPost_saddle
+    400016: unicycle_wheel
+    400018: unicycle_wheel_leftCrank
+    400020: unicycle_wheel_leftCrank_leftPedal
+    400022: unicycle_wheel_rightCrank
+    400024: unicycle_wheel_rightCrank_rightPedal
+    400026: unicycle_wheel_spokes
+    400028: unicycle_wheel_spokes_rim
+    400030: unicycle_wheel_spokes_rim_tyre
+    2300000: unicycle
+    2300002: unicycle_seatPost
+    2300004: unicycle_seatPost_saddle
+    3300000: unicycle
+    3300002: unicycle_seatPost
+    3300004: unicycle_seatPost_saddle
+    4300000: unicycle_wheel_leftCrank
+    4300002: unicycle_wheel_spokes_rim_tyre
+    4300004: unicycle_wheel_spokes_rim
+    4300006: unicycle_wheel
+    4300008: unicycle_wheel_spokes
+    4300010: unicycle_wheel_rightCrank
+    4300012: unicycle_wheel_leftCrank_leftPedal
+    4300014: unicycle_wheel_rightCrank_rightPedal
+    4300016: unicycle
+    4300018: unicycle_seatPost_saddle
+    4300020: unicycle_seatPost
+    7400000: Default Take
+    7400002: fwd
+    9500000: //RootNode
+    13700000: unicycle_wheel
+    13700002: unicycle_wheel_leftCrank
+    13700004: unicycle_wheel_leftCrank_leftPedal
+    13700006: unicycle_wheel_rightCrank
+    13700008: unicycle_wheel_rightCrank_rightPedal
+    13700010: unicycle_wheel_spokes
+    13700012: unicycle_wheel_spokes_rim
+    13700014: unicycle_wheel_spokes_rim_tyre
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: fwd
+      takeName: fwd
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_002
+        weight: 1
+      - path: unicycle
+        weight: 1
+      - path: unicycle/unicycle_seatPost
+        weight: 1
+      - path: unicycle/unicycle_seatPost_saddle
+        weight: 1
+      - path: unicycle_wheel
+        weight: 1
+      - path: unicycle_wheel_leftCrank
+        weight: 1
+      - path: unicycle_wheel_leftCrank_leftPedal
+        weight: 1
+      - path: unicycle_wheel_rightCrank
+        weight: 1
+      - path: unicycle_wheel_rightCrank_rightPedal
+        weight: 1
+      - path: unicycle_wheel_spokes
+        weight: 1
+      - path: unicycle_wheel_spokes_rim
+        weight: 1
+      - path: unicycle_wheel_spokes_rim_tyre
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.3
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
