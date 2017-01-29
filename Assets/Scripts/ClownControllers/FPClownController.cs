@@ -14,6 +14,11 @@ public class FPClownController : MonoBehaviour {
     public GameObject handBone;
     public GrabPropHelper m_PropHelper;
 
+    //Unicycle Stuff
+    public bool m_onUnicycle;
+    public Unicycle m_Unicycle;
+    public HeadBob m_HeadBob;
+
     //Player Control
     private bool m_playerControl = false;
 
@@ -21,11 +26,44 @@ public class FPClownController : MonoBehaviour {
 	void Start () {
         SetComponents();
         m_holdingProp = false;
+        ManageUnicycleVisibility();
 	}
 	
     private void SetComponents()
     {
         m_Drifter = GetComponent<FirstPersonDrifter>();
+    }
+
+    private void ManageUnicycleVisibility()
+    {
+        m_Animator.SetBool("Unicycle", m_onUnicycle);
+        m_Unicycle.gameObject.SetActive(m_onUnicycle);
+        if (m_onUnicycle)
+        {
+            m_HeadBob.midpoint = 1.45f;
+        } else
+        {
+            m_HeadBob.midpoint = 1.15f;
+        }
+    }
+
+    public void ActivateUnicycle()
+    {
+        m_onUnicycle = true;
+        ManageUnicycleVisibility();
+    }
+
+    public void DeactivateUnicycle()
+    {
+        m_onUnicycle = false;
+        ManageUnicycleVisibility();
+    }
+
+    public void LookAtHands()
+    {
+        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.NoControl);
+        m_playerControl = false;
+        m_Animator.SetTrigger("LookAtHands");
     }
 
     public void ActivateFPControl()
@@ -44,6 +82,10 @@ public class FPClownController : MonoBehaviour {
     private void ManageWalkAnimation()
     {
         m_Animator.SetBool("Walking", m_Drifter.walking);
+        if (m_onUnicycle)
+        {
+            m_Unicycle.GetComponent<Animator>().SetBool("Cycling", m_Drifter.walking);
+        }        
     }
 
     private void ManageProp()

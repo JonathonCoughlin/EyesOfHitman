@@ -18,6 +18,8 @@ public class FishingSequence : MonoBehaviour {
     public Camera descendingCamera;
     public SplineWalker cameraTarget;
 
+    public TutorialCanvas tutorialUI;
+
     //47 Sequence
     public SplineWalker hitmanBoatWalker;
     public AudioSource titleMusic;
@@ -46,6 +48,17 @@ public class FishingSequence : MonoBehaviour {
 	
 	}
 
+    public void FadeOut()
+    {
+        KillFP();
+        titleMusic.Stop();
+    }
+
+    public void KillFP()
+    {
+        Destroy(fp47.gameObject);
+    }
+
     public void StartFishingSequence()
     {
         m_animator.SetTrigger("BeginSequence");
@@ -56,7 +69,7 @@ public class FishingSequence : MonoBehaviour {
         HitmanGameManager.KillAllCameras();
         cameraTarget.StartWalking();
         camWalker.StartWalking();
-        descendingCamera.enabled = true;
+        HitmanGameManager.ActivateCameraAndListen(descendingCamera); 
     }
 
     public void StartTalking()

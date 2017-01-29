@@ -27,6 +27,9 @@ namespace JonClickSystem
         //Components
         private GameObject myClickableObject;
         private GameObject thePlayer;
+        public bool highlightObjectOverride;
+        private GameObject highlightableObject;
+        public GameObject overrideObject;
         //Required Components
         private ClickEventManager myClickManager;
 
@@ -40,6 +43,13 @@ namespace JonClickSystem
 
         private void SetComponents()
         {
+            if (highlightObjectOverride)
+            {
+                highlightableObject = overrideObject;
+            } else
+            {
+                highlightableObject = this.gameObject;
+            }
             myClickableObject = this.gameObject;
             thePlayer = GameObject.FindGameObjectWithTag("Player");
             myClickManager = GetComponent<ClickEventManager>();
@@ -60,7 +70,7 @@ namespace JonClickSystem
 
         private void SetColors()
         {
-            originalColor = myClickableObject.GetComponent<Renderer>().material.color;
+            originalColor = highlightableObject.GetComponent<Renderer>().material.color;
             highlightColor = originalColor;
             highlightColor.g = originalColor.g * highlightScale;
             highlightColor.b = originalColor.b * highlightScale;
@@ -143,13 +153,13 @@ namespace JonClickSystem
         {
             Debug.Log("Tried Highlighting");
             amHighlighted = true;
-            myClickableObject.GetComponent<Renderer>().material.color = highlightColor;
+            highlightableObject.GetComponent<Renderer>().material.color = highlightColor;
         }
 
         private void RemoveHighlight()
         {
             amHighlighted = false;
-            myClickableObject.GetComponent<Renderer>().material.color = originalColor;
+            highlightableObject.GetComponent<Renderer>().material.color = originalColor;
         }
         private void PlayerClickedMe()
         {

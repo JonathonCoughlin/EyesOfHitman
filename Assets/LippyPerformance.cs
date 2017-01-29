@@ -24,4 +24,9 @@ public class LippyPerformance : MonoBehaviour {
     {
         m_Animator.SetTrigger("Perform");
     }
+
+    public void MakeLippyDead()
+    {
+        m_Animator.SetTrigger("Dead");
+    }
 }

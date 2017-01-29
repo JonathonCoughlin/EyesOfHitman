@@ -20,6 +20,7 @@ public class SpeakingClown : MonoBehaviour {
     private float m_rampSlope = 0f;
     public float m_resetDelay;
     private float m_timeSinceClipEnd = 0f;
+    private float m_maxVolume = 0f;
 
     //Components
     private AudioSource m_Voice;
@@ -35,6 +36,7 @@ public class SpeakingClown : MonoBehaviour {
         m_Voice = GetComponent<AudioSource>();
         m_Voice.clip = m_Story;
         m_Animator = GetComponent<Animator>();
+        m_maxVolume = m_Voice.volume;
         SetAnimationFromKey();
         SilenceMe();
     }
@@ -64,9 +66,9 @@ public class SpeakingClown : MonoBehaviour {
                 m_rampSlope = 0f;
                 PauseSpeak();
             }
-            else if (m_Voice.volume > 1f)
+            else if (m_Voice.volume > m_maxVolume)
             {
-                m_Voice.volume = 1f;
+                m_Voice.volume = m_maxVolume;
                 m_rampSlope = 0f;
             }
 
@@ -100,12 +102,12 @@ public class SpeakingClown : MonoBehaviour {
 
     private void RampVolumeUp()
     {
-        m_rampSlope = 1f / m_rampTimeConstant;
+        m_rampSlope = m_maxVolume / m_rampTimeConstant;
     }
 
     private void RampVolumeDown()
     {
-        m_rampSlope = -1f / m_rampTimeConstant;
+        m_rampSlope = -m_maxVolume / m_rampTimeConstant;
     }
 
     public void EndSpeaking()

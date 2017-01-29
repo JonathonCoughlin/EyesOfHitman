@@ -13,7 +13,8 @@ public class ClownSpawner : MonoBehaviour {
     private float m_poolClock = 0f;
     private int m_currentSpawnPool = 0;
     public bool m_Paused = false;
-    public enum SpawnState { Paused, Pooling, Spawning };
+    public bool m_PoolAndSpawnOnCmd = false;
+    public enum SpawnState { Paused, Pooling, Spawning, AwaitingCmd };
     public SpawnState m_SpawnState;
     
 	// Use this for initialization
@@ -52,7 +53,13 @@ public class ClownSpawner : MonoBehaviour {
                     if (m_currentSpawnPool >= m_SpawnPoolSize)
                     {
                         //Switch to pooling, reset spawn counters
-                        m_SpawnState = SpawnState.Pooling;
+                        if (m_PoolAndSpawnOnCmd)
+                        {
+                            m_SpawnState = SpawnState.AwaitingCmd;
+                        } else
+                        {
+                            m_SpawnState = SpawnState.Pooling;
+                        }                        
                         m_spawnClock = 0f;
                         m_currentSpawnPool = 0;
                     }
@@ -60,4 +67,15 @@ public class ClownSpawner : MonoBehaviour {
                 }
         }
 	}
+
+    public void PoolAndSpawn(float poolTime, int spawnSize, float spawnTime)
+    {
+        m_poolClock = 0f;
+        m_spawnClock = 0f;
+        m_currentSpawnPool = 0;
+        m_SpawnInterval = spawnTime;
+        m_SpawnPoolSize = spawnSize;
+        m_PoolDelay = poolTime;
+        m_SpawnState = SpawnState.Pooling;
+}
 }

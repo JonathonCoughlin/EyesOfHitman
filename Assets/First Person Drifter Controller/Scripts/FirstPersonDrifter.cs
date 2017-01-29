@@ -89,7 +89,7 @@ public class FirstPersonDrifter: MonoBehaviour
 
     public void SetMainCamera()
     {
-        fpCamera.enabled = true;
+        HitmanGameManager.ActivateCameraAndListen(fpCamera);
         fpCamera.tag = "MainCamera";
     }
 
@@ -120,8 +120,9 @@ public class FirstPersonDrifter: MonoBehaviour
                 }
             case LookControlLimits.VerticalOnly:
                 {
-                    horizontalMouseLook.minimumX = 0f;
-                    horizontalMouseLook.maximumX = 0f;
+                    float currentX = horizontalMouseLook.rotationX;
+                    horizontalMouseLook.minimumX = currentX;
+                    horizontalMouseLook.maximumX = currentX;
                     verticalMouseLook.minimumY = -85f;
                     verticalMouseLook.maximumY = 85f;
                     headBobScript.enabled = false;
@@ -131,8 +132,9 @@ public class FirstPersonDrifter: MonoBehaviour
                 }
             case LookControlLimits.NoControl:
                 {
-                    horizontalMouseLook.minimumX = 0f;
-                    horizontalMouseLook.maximumX = 0f;
+                    float currentX = horizontalMouseLook.rotationX;
+                    horizontalMouseLook.minimumX = currentX;
+                    horizontalMouseLook.maximumX = currentX;
                     verticalMouseLook.minimumY = 0f;
                     verticalMouseLook.maximumY = 0f;
                     headBobScript.enabled = false;
@@ -142,6 +144,13 @@ public class FirstPersonDrifter: MonoBehaviour
         }
     }
  
+    public void MakeMeAChildOfYourPeace(GameObject myParent)
+    {
+        this.transform.SetParent(myParent.transform);
+        this.transform.position = myParent.transform.position;
+        this.transform.rotation = myParent.transform.rotation;
+    }
+
     void FixedUpdate() {
 
         //JAC Updates - Limit Control

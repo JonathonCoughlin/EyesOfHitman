@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Animator))]
 public class SingleFish : MonoBehaviour {
 
     private Animator m_Animator;
+
+    public List<GameObject> m_Credits;
+    public int m_creditsIdx;
    
     // Use this for initialization
 	void Start () {
         SetComponents();
+        UpdateCredits();
 	}
 	
     private void SetComponents()
@@ -20,6 +25,23 @@ public class SingleFish : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    private void UpdateCredits()
+    {
+        m_Credits.ForEach(delegate (GameObject creditLine)
+        {
+            creditLine.SetActive(false);
+        });
+
+        m_Credits[m_creditsIdx].SetActive(true);
+    }
+
+    public void NextCredit()
+    {
+        m_creditsIdx++;
+        if (m_creditsIdx >= m_Credits.Count) m_creditsIdx = 0;
+        UpdateCredits();
+    }
 
     public void FishermanAction()
     {

@@ -13,7 +13,19 @@ public class AssassinationSequence : MonoBehaviour {
     //Characters
     public LippyPerformance m_Lippy;
     public Agent47Performance m_47;
-    
+    public FirstPersonDrifter m_FP47;
+    public TableClown m_LippyMingling;
+    public GameObject m_LandingTarget;
+    public GameObject m_OldBoat;
+    public GameObject m_NewBoat;
+    public SplineWalker m_GetAwayWalker;
+    public SplineWalker m_GetAwayCamWalker;
+    public GameObject m_Masks;
+    public GameObject m_MasksOnFloor;
+    public GameObject m_Wilboe;
+    public SplineWalker m_CreditsTarget;
+
+
     //Cameras
     public Camera EntranceCam;
     public Camera ControlRoomCam;
@@ -22,10 +34,17 @@ public class AssassinationSequence : MonoBehaviour {
     public Camera BallroomCam;
     public Camera HoFCam;
     public Camera RedCarpetCam;
-    public Camera DotGobblerCam;
+    public Camera GetawayCam;
 
 
-	// Use this for initialization
+    public AudioSource m_Piano;
+    public AudioSource m_Speaker1;
+    public AudioSource m_Speaker2;
+    public AudioSource m_Mumblers;
+
+
+
+   // Use this for initialization
 	void Start () {
         SetComponents();
 	}
@@ -43,6 +62,23 @@ public class AssassinationSequence : MonoBehaviour {
 
     public void Animate()
     {
+        //kill Music
+        m_Piano.Stop();
+        m_Speaker1.Stop();
+        m_Speaker2.Stop();
+        m_Mumblers.Stop();
+
+        //Switch 47 and Lippy
+        Destroy(m_LippyMingling.gameObject);
+        m_Lippy.gameObject.SetActive(true);
+        m_47.gameObject.SetActive(true);
+
+        //Move FP47
+        m_OldBoat.SetActive(false);
+        m_NewBoat.SetActive(true);
+        m_FP47.MakeMeAChildOfYourPeace(m_LandingTarget);
+        m_FP47.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.NoControl);
+
         m_Animator.SetTrigger("Animate");
     }
 
@@ -50,7 +86,7 @@ public class AssassinationSequence : MonoBehaviour {
     {
         HitmanGameManager.KillAllCameras();
         //Switch Camera
-        EntranceCam.enabled = true;
+        HitmanGameManager.ActivateCameraAndListen(EntranceCam);
         //Move Camera
         EntranceCam.GetComponent<SplineWalker>().StartWalking();
         
@@ -66,58 +102,69 @@ public class AssassinationSequence : MonoBehaviour {
         //Start Music
         m_SongPlayer.Play();
     }
-
-    //public Camera EntranceCam;
-    //public Camera ControlRoomCam;
-    //public Camera CableCam;
-    //public Camera CycleCam;
-    //public Camera BallroomCam;
-    //public Camera HoFCam;
-    //public Camera RedCarpetCam;
-    //public Camera DotGobblerCam;
-
+    
     public void GoBallroomCam()
     {
         HitmanGameManager.KillAllCameras();
         //Switch Camera
-        BallroomCam.enabled = true;
+        HitmanGameManager.ActivateCameraAndListen(BallroomCam);
         //MoveCamera
         BallroomCam.GetComponent<SplineWalker>().StartWalking();
     }
 
     public void GoControlRoomCam()
     {
+        MakeLippyDead();
         HitmanGameManager.KillAllCameras();
         //Switch Camera
-        ControlRoomCam.enabled = true;
-        //Move Camera   
+        HitmanGameManager.ActivateCameraAndListen(ControlRoomCam);
+        //Move Camera
         ControlRoomCam.GetComponent<SplineWalker>().StartWalking();
+    }
+
+    public void GoGetawayCam()
+    {
+        m_GetAwayWalker.StartWalking();
+        m_GetAwayCamWalker.StartWalking();
+        m_CreditsTarget.StartWalking();
+        HitmanGameManager.KillAllCameras();
+        HitmanGameManager.ActivateCameraAndListen(GetawayCam);
+        m_Wilboe.gameObject.SetActive(true);
+        
+    }
+
+    public void MakeLippyDead()
+    {
+        m_Lippy.MakeLippyDead();
+        m_Masks.transform.position = m_MasksOnFloor.transform.position;
+        m_Masks.transform.rotation = m_MasksOnFloor.transform.rotation;
     }
 
     public void GoRedCarpetCam()
     {
         HitmanGameManager.KillAllCameras();
-        RedCarpetCam.enabled = true;
+        HitmanGameManager.ActivateCameraAndListen(RedCarpetCam);
         RedCarpetCam.GetComponent<SplineWalker>().StartWalking();
     }
 
     public void GoHoFCam()
     {
         HitmanGameManager.KillAllCameras();
-        HoFCam.enabled = true;
+        HitmanGameManager.ActivateCameraAndListen(HoFCam);
         HoFCam.GetComponent<SplineWalker>().StartWalking();
     }
 
     public void GoCableCam()
     {
         HitmanGameManager.KillAllCameras();
-        CableCam.enabled = true;
+        HitmanGameManager.ActivateCameraAndListen(CableCam);
         CableCam.GetComponent<SplineWalker>().StartWalking();
     }
 
     public void GoCycleCam()
     {
         HitmanGameManager.KillAllCameras();
+        HitmanGameManager.ActivateCameraAndListen(CycleCam);
         CycleCam.enabled = true;
     }
 

@@ -26,8 +26,9 @@ public class MouseLook : MonoBehaviour
 	public float minimumY = -85F;
 	public float maximumY = 85F;
  
-	float rotationX = 0F;
-	float rotationY = 0F;
+	public float rotationX { get; private set; }
+    
+	public float rotationY { get; private set; }
  
 	private List<float> rotArrayX = new List<float>();
 	float rotAverageX = 0F;	

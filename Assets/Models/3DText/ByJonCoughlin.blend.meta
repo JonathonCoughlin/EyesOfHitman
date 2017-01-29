@@ -18,6 +18,10 @@ ModelImporter:
     100020: Bone_007
     100022: Bone_008
     100024: Bone_009
+    100026: ByJonCoughlin
+    100028: NATE_SELOF
+    100030: SCORED_BY
+    100032: STARRING
     400000: //RootNode
     400002: Armature
     400004: Bone
@@ -31,11 +35,19 @@ ModelImporter:
     400020: Bone_007
     400022: Bone_008
     400024: Bone_009
+    400026: ByJonCoughlin
+    400028: NATE_SELOF
+    400030: SCORED_BY
+    400032: STARRING
     2300000: //RootNode
     2300002: Text
     3300000: //RootNode
     3300002: Text
     4300000: Text
+    4300002: STARRING
+    4300004: SCORED_BY
+    4300006: NATE_SELOF
+    4300008: ByJonCoughlin
     7400000: Default Take
     7400002: Breathing
     7400004: Flop
@@ -44,6 +56,10 @@ ModelImporter:
     7400010: Flop0
     9500000: //RootNode
     13700000: Text
+    13700002: ByJonCoughlin
+    13700004: NATE_SELOF
+    13700006: SCORED_BY
+    13700008: STARRING
   materials:
     importMaterials: 1
     materialName: 0

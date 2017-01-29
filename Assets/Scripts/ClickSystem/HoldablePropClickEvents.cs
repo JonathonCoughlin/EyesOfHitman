@@ -55,6 +55,12 @@ namespace JonClickSystem
         {
             
             player.GrabProp(this.gameObject);
+
+            if (FindObjectOfType(typeof(AssassinationCues)))
+            {
+                AssassinationCues tempCues = (AssassinationCues)FindObjectOfType(typeof(AssassinationCues));
+                tempCues.HoldingAxe();
+            }
         }
 
         public void GrabMe()

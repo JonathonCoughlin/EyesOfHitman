@@ -24,10 +24,16 @@ public class ClownShuffler : MonoBehaviour
     void Start()
     {
         SetComponents();
+        ShuffleMe();
+    }
+
+    public void ShuffleMe()
+    {
         if (m_shuffleHead)
         {
             ShuffleHead();
-        } else
+        }
+        else
         {
             m_currentHeadID = m_headOverrideID;
             SetHead();
@@ -36,17 +42,12 @@ public class ClownShuffler : MonoBehaviour
         if (m_shuffleBody)
         {
             ShuffleBody();
-        } else
+        }
+        else
         {
             m_currentBodyID = m_bodyOverrideID;
             SetBody();
         }
-        
-    }
-
-    public void Awake()
-    {
-        
     }
 
     private void SetComponents()

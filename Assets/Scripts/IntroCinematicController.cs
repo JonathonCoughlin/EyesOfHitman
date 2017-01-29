@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class IntroCinematicController : MonoBehaviour {
 
     private Animator m_CinematicAnimator;
     private SplineWalker m_SplineWalker;
     private AudioSource m_AudioSource;
+
+    public Image m_Blackout;
 
     //LippyText
     public SplineWalker LippyBackground;
@@ -30,6 +33,11 @@ public class IntroCinematicController : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void KillBlackout()
+    {
+        Destroy(m_Blackout.gameObject);
+    }
 
     public void BeginIntroCinematic()
     {
