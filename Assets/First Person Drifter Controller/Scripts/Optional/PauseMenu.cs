@@ -11,6 +11,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -49,6 +50,9 @@ public class PauseMenu : MonoBehaviour
 	
 	private float defaultFOV;
 	private float defaultSensitivity;
+
+    //Audio Upgrades
+    private List<AudioSource> prePauseAudioPlayers;
 	
 	// Use this for initialization
 	void Start ()
@@ -247,17 +251,44 @@ public class PauseMenu : MonoBehaviour
 	{
 		paused = !paused;
 		Time.timeScale = 1.0f - Time.timeScale;
+       
 		
 		// pause or unpause the music
 		if( paused )
 		{
 			print("Game Paused");
-		}
+            PauseAudio();
+        }
 		else
 		{
 			print("Game Resumed");
+            UnPauseAudio();
 		}
 	}
+
+    public void PauseAudio()
+    {
+        prePauseAudioPlayers = new List<AudioSource>();
+        AudioSource[] allAudio = FindObjectsOfType<AudioSource>();
+
+        for (int ii = 0; ii < allAudio.Length; ii++)
+        {
+            if (allAudio[ii].isPlaying)
+            {
+                allAudio[ii].Pause();
+                prePauseAudioPlayers.Add(allAudio[ii]);
+            }
+        }
+
+    }
+
+    public void UnPauseAudio()
+    {
+        prePauseAudioPlayers.ForEach (delegate(AudioSource unPauseMe) 
+        {
+            unPauseMe.UnPause();
+        });
+    }
 	
 	void DrawPauseMenuBG()
 	{
