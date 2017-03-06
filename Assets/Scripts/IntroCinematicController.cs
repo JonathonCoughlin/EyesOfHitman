@@ -11,11 +11,9 @@ public class IntroCinematicController : MonoBehaviour {
 
     public Image m_Blackout;
 
-    //LippyText
+    //Animated Text
     public SplineWalker LippyBackground;
-    public SplineWalker AdolfTxt;
-    public SplineWalker akaTxt;
-    public SplineWalker LippyTxt;
+    public SplineWalker MagiciansBkgrd;
 
 	// Use this for initialization
 	void Start () {
@@ -65,19 +63,9 @@ public class IntroCinematicController : MonoBehaviour {
         LippyBackground.StartWalking();
     }
 
-    public void WalkAdolf()
+    public void WalkMagiciansBkgrd()
     {
-        AdolfTxt.StartWalking();
-    }
-
-    public void WalkAka()
-    {
-        akaTxt.StartWalking();
-    }
-
-    public void WalkLippy()
-    {
-        LippyTxt.StartWalking();
+        MagiciansBkgrd.StartWalking();
     }
 
 }

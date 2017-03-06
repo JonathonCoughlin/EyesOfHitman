@@ -18,9 +18,13 @@ public class FPClownController : MonoBehaviour {
     public bool m_onUnicycle;
     public Unicycle m_Unicycle;
     public HeadBob m_HeadBob;
+    public GameObject m_Cheese;
 
     //Player Control
     private bool m_playerControl = false;
+
+    //Tracking Helpers
+    public GameObject m_waiterTrackTarget;
 
 	// Use this for initialization
 	void Start () {
@@ -51,12 +55,16 @@ public class FPClownController : MonoBehaviour {
     {
         m_onUnicycle = true;
         ManageUnicycleVisibility();
+        m_Cheese.SetActive(true);
+        m_HeadBob.enabled = false;
     }
 
     public void DeactivateUnicycle()
     {
         m_onUnicycle = false;
+        m_Cheese.SetActive(false);
         ManageUnicycleVisibility();
+        m_HeadBob.enabled = true;
     }
 
     public void LookAtHands()
@@ -64,6 +72,40 @@ public class FPClownController : MonoBehaviour {
         m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.NoControl);
         m_playerControl = false;
         m_Animator.SetTrigger("LookAtHands");
+    }
+
+    public void DisabledWaiter()
+    {
+        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.NoControl);
+        m_playerControl = false;
+        m_Animator.SetTrigger("DisabledWaiter");
+    }
+
+    public void Dab()
+    {
+        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.NoControl);
+        m_playerControl = false;
+        m_Animator.SetTrigger("Dab");
+    }
+
+    public void AAA()
+    {
+        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.NoControl);
+        m_playerControl = false;
+        m_Animator.SetTrigger("AAA");
+    }
+
+    public void LookAtWaiter()
+    {
+        m_Drifter.TrackTarget(m_waiterTrackTarget, WalkControlLimits.FullControl);
+        m_playerControl = true;
+        //m_Animator.SetTrigger(); // placeholder for FPHand animation
+    }
+
+    public void StopTracking()
+    {
+        m_Drifter.SwitchControlTypes(WalkControlLimits.FullControl, LookControlLimits.FullControl);
+        m_playerControl = true;
     }
 
     public void ActivateFPControl()

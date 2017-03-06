@@ -35,7 +35,7 @@ public class BallroomSequence : MonoBehaviour {
     public void StartBallroomSequence()
     {
         TurnOnLights();
-        //AnimateClowns();
+        AnimateClowns();
         PlayPiano();
         StartWaiters();
         ActivateFPControl();
@@ -46,7 +46,7 @@ public class BallroomSequence : MonoBehaviour {
     public void TransitionSequence()
     {
         TurnOnLights();
-        //AnimateClowns();
+        AnimateClowns();
         PlayPiano();
         StartWaiters();
         m_CanonLight.TurnOff();
@@ -56,7 +56,7 @@ public class BallroomSequence : MonoBehaviour {
     public void LowResourceSequence()
     {
         TurnOffLights();
-        //PauseClowns();
+        PauseClowns();
         Piano.Pause();
         m_Mumbler.Reset();        
     }
@@ -90,6 +90,7 @@ public class BallroomSequence : MonoBehaviour {
             TableClowns[ii].gameObject.GetComponent<Animator>().enabled = true;
             TableClowns[ii].gameObject.GetComponent<ClownShuffler>().enabled = true;
             TableClowns[ii].gameObject.GetComponent<ClownShuffler>().ShuffleMe();
+            TableClowns[ii].RandAnimationStartPos();
         }
 
         SpeakingClowns = GetComponentsInChildren<SpeakingClown>();

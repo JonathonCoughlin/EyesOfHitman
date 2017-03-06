@@ -43,6 +43,9 @@ public class MouseLook : MonoBehaviour
     private Vector3 blendoAngles;
  
 	Quaternion originalRotation;
+
+    private GameObject targetToTrack;
+    private bool amTrackingTarget = false;
 	
 	void Start ()
 	{			
@@ -87,7 +90,20 @@ public class MouseLook : MonoBehaviour
             {
                 rotAverageX = 0f;
 
-                rotationX += Input.GetAxis("Mouse X") * sensitivityX * Time.timeScale;
+                //rotationX - total rotation rel original
+                if (amTrackingTarget)
+                {
+                    Vector3 meToTgtWorld = targetToTrack.transform.position - this.transform.position;
+                    Vector3 originalFwd = originalRotation * Vector3.forward;
+                    Vector3 xPlane = Vector3.forward + Vector3.right;
+                    Vector3 meToTgtInXPlane = new Vector3(meToTgtWorld.x,0f,meToTgtWorld.z);
+                    rotationX = Vector3.Angle(originalFwd, meToTgtInXPlane);
+                } else
+                {
+                    rotationX += Input.GetAxis("Mouse X") * sensitivityX * Time.timeScale;
+                }
+                
+                //rotArrayX - history of X rotation
                 rotArrayX.Add(rotationX);
 
                 if (rotArrayX.Count >= framesOfSmoothing)
@@ -100,7 +116,7 @@ public class MouseLook : MonoBehaviour
                 }
                 rotAverageX /= rotArrayX.Count;
                 rotAverageX = ClampAngle(rotAverageX, minimumX, maximumX);
-
+                
                 Quaternion xQuaternion = Quaternion.AngleAxis(rotAverageX, Vector3.up);
                 transform.localRotation = originalRotation * xQuaternion;
             }
@@ -132,6 +148,18 @@ public class MouseLook : MonoBehaviour
             }
         }
 	}
+
+    public void TrackThisTarget(GameObject tempTarget)
+    {
+        targetToTrack = tempTarget;
+
+        amTrackingTarget = true;
+    }
+
+    public void StopTracking()
+    {
+        amTrackingTarget = false;
+    }
 	
 	public void SetSensitivity(float s)
 	{

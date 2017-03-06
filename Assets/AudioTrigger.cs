@@ -13,10 +13,24 @@ public class AudioTrigger : MonoBehaviour {
 
     private int m_enterCount = 0;
     private int m_exitCount = 0;
-    
 
-	// Use this for initialization
-	void Start () {
+    public bool m_triggerOnAlternativeObject = false;
+    public GameObject m_triggerObject;
+
+
+    //Speech States
+    public bool m_rampAudio;
+    private bool m_vocal = false;
+    public float m_rampTimeConstant;
+    private float m_rampSlope = 0f;
+    public float m_resetDelay;
+    private float m_timeSinceClipEnd = 0f;
+    private float m_maxVolume = 0f;
+
+
+
+    // Use this for initialization
+    void Start () {
         SetComponents();
 	}
 	
@@ -27,8 +41,34 @@ public class AudioTrigger : MonoBehaviour {
     
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        if (m_vocal && m_rampAudio)
+        {
+            m_Voice.volume += m_rampSlope * Time.deltaTime;
+            if (m_Voice.volume <= 0f)
+            {
+                m_Voice.volume = 0f;
+                m_rampSlope = 0f;
+                PauseSpeak();
+            }
+            else if (m_Voice.volume > m_maxVolume)
+            {
+                m_Voice.volume = m_maxVolume;
+                m_rampSlope = 0f;
+            }
+
+            if (!m_Voice.isPlaying)
+            {
+                if (m_timeSinceClipEnd < m_resetDelay)
+                {
+                    m_timeSinceClipEnd += Time.deltaTime;
+                }
+                else
+                {
+                    Speak();
+                }
+            }
+        }
+    }
 
     public void Reset()
     {
@@ -37,9 +77,50 @@ public class AudioTrigger : MonoBehaviour {
         m_exitCount = 0;
     }
 
+
+    void OnTriggerExit(Collider other)
+    {
+        bool properGameObject = false;
+        if (m_triggerOnAlternativeObject)
+        {
+            properGameObject = other.gameObject == m_triggerObject;
+
+        } else
+        {
+            properGameObject = other.gameObject.tag == "Player";
+        }        
+
+        if (properGameObject)
+        {
+            m_exitCount++;
+            if (m_exitCount == 1 && m_triggerType == AudioTriggerType.Exit)
+            {
+                if (m_rampAudio)
+                {
+                    BeginSpeaking();
+                }
+                else
+                {
+                    PlayDialog();
+                }
+            }
+        }
+    }
+
     void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        bool properGameObject = false;
+        if (m_triggerOnAlternativeObject)
+        {
+            properGameObject = other.gameObject == m_triggerObject;
+
+        }
+        else
+        {
+            properGameObject = other.gameObject.tag == "Player";
+        }
+
+        if (properGameObject)
         {
             m_enterCount++;
             switch (m_enterCount)
@@ -48,7 +129,14 @@ public class AudioTrigger : MonoBehaviour {
                     {
                         if (m_triggerType == AudioTriggerType.Enter)
                         {
-                            PlayDialog();
+                            if (m_rampAudio)
+                            {
+                                BeginSpeaking();
+                            } else
+                            {
+                                PlayDialog();
+                            }
+                            
                         }
                         break;
                     }
@@ -56,12 +144,63 @@ public class AudioTrigger : MonoBehaviour {
                     {
                         if (m_triggerType == AudioTriggerType.EnterTwice)
                         {
-                            PlayDialog();
+                            if (m_rampAudio)
+                            {
+                                BeginSpeaking();
+                            }
+                            else
+                            {
+                                PlayDialog();
+                            }
                         }
                         break;
                     }
             }
         }
+    }
+
+    //Speech
+    public void SilenceMe()
+    {
+        m_Voice.volume = 0f;
+        m_Voice.Stop();
+    }
+
+    public void BeginSpeaking()
+    {
+        if (!m_vocal)
+        {
+            Speak();
+        }
+        RampVolumeUp();
+    }
+
+    private void RampVolumeUp()
+    {
+        m_rampSlope = m_maxVolume / m_rampTimeConstant;
+    }
+
+    private void RampVolumeDown()
+    {
+        m_rampSlope = -m_maxVolume / m_rampTimeConstant;
+    }
+
+    public void EndSpeaking()
+    {
+        RampVolumeDown();
+    }
+
+    public void Speak()
+    {
+        m_Voice.Play();
+        m_vocal = true;
+        m_timeSinceClipEnd = 0f;
+    }
+
+    public void PauseSpeak()
+    {
+        m_Voice.Pause();
+        m_vocal = false;
     }
 
     private void PlayDialog()
@@ -77,15 +216,5 @@ public class AudioTrigger : MonoBehaviour {
         }        
     }
 
-    void OnTriggerExit (Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            m_exitCount++;
-            if (m_exitCount == 1 && m_triggerType == AudioTriggerType.Exit)
-            {
-                PlayDialog();
-            }
-        }
-    }
+    
 }

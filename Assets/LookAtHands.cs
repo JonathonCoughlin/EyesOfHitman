@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum FPHandsOverrideType { LookAtHands, DisabledWaiter, Dab, AAA};
+
 public class LookAtHands : MonoBehaviour {
+
+    public FPHandsOverrideType m_handsLookType;
 
     private Collider m_Collider;
 
@@ -19,7 +23,32 @@ public class LookAtHands : MonoBehaviour {
             m_enterCount++;
             if (m_enterCount == 1)
             {
-                other.gameObject.GetComponent<FPClownController>().LookAtHands();
+                switch (m_handsLookType)
+                {
+                    case FPHandsOverrideType.LookAtHands:
+                        {
+                            other.gameObject.GetComponent<FPClownController>().LookAtHands();
+                            break;
+                        }
+                    case FPHandsOverrideType.DisabledWaiter:
+                        {
+                            other.gameObject.GetComponent<FPClownController>().DisabledWaiter();
+                            break;
+                        }
+                    case FPHandsOverrideType.Dab:
+                        {
+                            other.gameObject.GetComponent<FPClownController>().Dab();
+                            break;
+                        }
+                    case FPHandsOverrideType.AAA:
+                        {
+                            other.gameObject.GetComponent<FPClownController>().AAA();
+                            break;
+                        }
+
+                }
+
+                
             }
         }
     }

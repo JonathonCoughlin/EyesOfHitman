@@ -5,7 +5,7 @@
 using UnityEngine;
 using System.Collections;
 
-public enum LookControlLimits { FullControl, HorizontalOnly, VerticalOnly, NoControl}
+public enum LookControlLimits { FullControl, HorizontalOnly, VerticalOnly, NoControl, TrackTarget}
 public enum WalkControlLimits { FullControl, AxialOnly, LateralOnly, NoWalk}
 
 [RequireComponent (typeof (CharacterController))]
@@ -65,7 +65,7 @@ public class FirstPersonDrifter: MonoBehaviour
     public MouseLook horizontalMouseLook;
     public MouseLook verticalMouseLook;
     private HeadBob headBobScript;
-    
+    private GameObject targetToTrack;
 
  
     void Start()
@@ -87,6 +87,16 @@ public class FirstPersonDrifter: MonoBehaviour
         SetLookControls();
     }
 
+    public void TrackTarget(GameObject tempTarget, WalkControlLimits walkControl)
+    {
+        // Set Control Limits
+        walkControlLimit = walkControl;
+        lookControlLimit = LookControlLimits.TrackTarget;
+        // Track Target
+        targetToTrack = tempTarget;
+        SetLookControls();
+    }
+
     public void SetMainCamera()
     {
         HitmanGameManager.ActivateCameraAndListen(fpCamera);
@@ -105,6 +115,7 @@ public class FirstPersonDrifter: MonoBehaviour
                     verticalMouseLook.maximumY = 85f;
                     fpCamera.transform.parent = this.transform;
                     headBobScript.enabled = true;
+                    horizontalMouseLook.StopTracking();
                     break;
                 }
             case LookControlLimits.HorizontalOnly:
@@ -115,7 +126,7 @@ public class FirstPersonDrifter: MonoBehaviour
                     verticalMouseLook.maximumY = 0f;
                     headBobScript.enabled = false;
                     fpCamera.transform.parent = HeadBone.transform;
-                    
+                    horizontalMouseLook.StopTracking();
                     break;
                 }
             case LookControlLimits.VerticalOnly:
@@ -127,7 +138,7 @@ public class FirstPersonDrifter: MonoBehaviour
                     verticalMouseLook.maximumY = 85f;
                     headBobScript.enabled = false;
                     fpCamera.transform.parent = HeadBone.transform;
-                    
+                    horizontalMouseLook.StopTracking();
                     break;
                 }
             case LookControlLimits.NoControl:
@@ -139,6 +150,12 @@ public class FirstPersonDrifter: MonoBehaviour
                     verticalMouseLook.maximumY = 0f;
                     headBobScript.enabled = false;
                     fpCamera.transform.parent = HeadBone.transform;
+                    horizontalMouseLook.StopTracking();
+                    break;
+                }
+            case LookControlLimits.TrackTarget:
+                {
+                    horizontalMouseLook.TrackThisTarget(targetToTrack);
                     break;
                 }
         }

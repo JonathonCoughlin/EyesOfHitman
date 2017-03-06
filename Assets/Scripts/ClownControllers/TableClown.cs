@@ -92,6 +92,14 @@ public class TableClown : MonoBehaviour {
         m_Animator.SetBool("WithDrink", m_drinking);
         m_Animator.SetBool("Static", m_static);
         m_Animator.SetBool("Sitting", m_sitting);
+
+    }
+
+    public void RandAnimationStartPos()
+    {
+        float randTime = Random.Range(0.1f, 0.9f);
+        //This just doesn't work yet
+        
     }
 
     private void SetAnimationFromKey()
