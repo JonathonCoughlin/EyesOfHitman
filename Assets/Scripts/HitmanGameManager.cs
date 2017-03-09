@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum GameState { Title, RedCarpet, HoF, Ballroom, Bathroom, Assassination, Credits }
+public enum GameState { Title, RedCarpet, HoF, Ballroom, Bathroom, ControlRoom, Assassination, Credits }
 
 public class HitmanGameManager : MonoBehaviour {
 
@@ -20,6 +20,7 @@ public class HitmanGameManager : MonoBehaviour {
     public HallOfFameSequence m_HoFSequence;
     public BallroomSequence m_BallroomSequence;
     public BathroomSequence m_BathroomSequence;
+    public ControlRoomSequence m_ControlRoomSequence;
     public AssassinationSequence m_AssassinationSequence;
 
 	// Use this for initialization
@@ -76,9 +77,26 @@ public class HitmanGameManager : MonoBehaviour {
                     m_ballroomCount++;
                     break;
                 }
+            case GameState.Bathroom:
+                {
+                    m_BathroomSequence.StartSequence();
+                    m_BallroomSequence.LowResourceSequence();
+                    break;
+                }
+
+
+            case GameState.ControlRoom:
+                {
+                    m_BallroomSequence.TransitionSequence();
+                    m_HoFSequence.EndSequence();
+                    m_RedCarpetSequence.EndRedCarpetSequence();
+                    m_ControlRoomSequence.StartSequence();
+                    break;
+                }
 
             case GameState.Assassination:
                 {
+                    m_BallroomSequence.TransitionSequence();
                     m_AssassinationSequence.Animate();
                     m_RedCarpetSequence.EndRedCarpetSequence();
                     m_RedCarpetSequence.TurnOnLights();
@@ -139,6 +157,11 @@ public class HitmanGameManager : MonoBehaviour {
                 {
                     m_BathroomSequence.StartSequence();
                     m_BallroomSequence.LowResourceSequence();
+                    break;
+                }
+            case GameState.ControlRoom:
+                {
+
                     break;
                 }
 

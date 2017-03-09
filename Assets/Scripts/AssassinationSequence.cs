@@ -32,6 +32,7 @@ public class AssassinationSequence : MonoBehaviour {
     public Camera CableCam;
     public Camera CycleCam;
     public Camera BallroomCam;
+    public Camera HardCutCam;
     public Camera HoFCam;
     public Camera RedCarpetCam;
     public Camera GetawayCam;
@@ -110,6 +111,15 @@ public class AssassinationSequence : MonoBehaviour {
         HitmanGameManager.ActivateCameraAndListen(BallroomCam);
         //MoveCamera
         BallroomCam.GetComponent<SplineWalker>().StartWalking();
+    }
+
+    public void GoHardCutCam()
+    {
+        HitmanGameManager.KillAllCameras();
+        //Switch Camera
+        HitmanGameManager.ActivateCameraAndListen(HardCutCam);
+        //MoveCamera
+        HardCutCam.GetComponent<Animator>().SetTrigger("AnimateMe");
     }
 
     public void GoControlRoomCam()

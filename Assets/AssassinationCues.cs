@@ -2,6 +2,8 @@
 using System.Collections;
 using JonClickSystem;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class AssassinationCues : MonoBehaviour {
 
     private HitmanGameManager m_Game;
@@ -14,6 +16,11 @@ public class AssassinationCues : MonoBehaviour {
     public HoldablePropClickEvents Axe;
     public CanonClickEvents LightSwitch;
     public PlayButtonClickEvents PlayButton;
+
+    //Speaking Parts
+    public AudioSource m_DialogVoice;
+    public AudioClip m_pulleyDialog;
+
 
     //States
     private bool readyForPlayButton = false;
@@ -48,7 +55,7 @@ public class AssassinationCues : MonoBehaviour {
     public void WaiterFound()
     {
         //Open Ballroom Door
-        BallroomDoor.enabled = true;
+        BallroomDoor.enabled = true;     
     }
 
     public void CostumeOn()
@@ -65,6 +72,7 @@ public class AssassinationCues : MonoBehaviour {
     public void HoldingAxe()
     {
         //Speak about pulley
+        m_DialogVoice.PlayOneShot(m_pulleyDialog);
 
         //Open Light Switch
         LightSwitch.enabled = true;

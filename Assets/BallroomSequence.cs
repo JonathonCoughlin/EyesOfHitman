@@ -24,13 +24,6 @@ public class BallroomSequence : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
 
     public void StartBallroomSequence()
     {
