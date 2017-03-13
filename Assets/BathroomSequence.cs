@@ -4,8 +4,9 @@ using System.Collections;
 public class BathroomSequence : MonoBehaviour {
 
     private Light[] m_Lights;
-
     private AudioSource m_BackgroundMusic;
+
+    public GameObject m_BathroomMirror;
 
 	// Use this for initialization
 	void Start () {
@@ -25,17 +26,30 @@ public class BathroomSequence : MonoBehaviour {
     public void LowResourceSequence()
     {
         TurnOffLights();
+        TurnOffReflections();
+    }
+
+    public void TurnOffReflections()
+    {
+        m_BathroomMirror.SetActive(false);
+    }
+
+    public void TurnOnReflections()
+    {
+        m_BathroomMirror.SetActive(true);
     }
 
     public void StartSequence()
     {
         TurnOnLights();
+        TurnOnReflections();
         m_BackgroundMusic.Play();
     }
 
     public void EndSequence()
     {
         TurnOffLights();
+        TurnOffReflections();
         m_BackgroundMusic.Stop();
     }
 

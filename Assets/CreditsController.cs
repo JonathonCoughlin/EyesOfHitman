@@ -20,6 +20,8 @@ public class CreditsController : MonoBehaviour {
     public Animator m_BradfordLineAnimator;
     public Animator m_BradfordDude;
 
+    public AudioClip m_Click;
+    public AudioSource m_SoundEffectsPlayer;
     public AudioClip m_Song2;
     public AudioSource m_SongPlayer;
 
@@ -32,6 +34,8 @@ public class CreditsController : MonoBehaviour {
     public Animator m_PortraitLineAnimator;
 
     public Animator m_PianoLineAnimator;
+
+    public Animator m_FinalThanksLineAnimator;
 
 	// Use this for initialization
 	void Start () {
@@ -87,6 +91,9 @@ public class CreditsController : MonoBehaviour {
         m_SongPlayer.loop = true;
         m_SongPlayer.volume = 0.9f;
         m_SongPlayer.Play();
+
+        m_SoundEffectsPlayer.PlayOneShot(m_Click);
+
     }
 
     public void AnimateSteven()
@@ -112,5 +119,10 @@ public class CreditsController : MonoBehaviour {
     public void PianoAnimator()
     {
         m_PianoLineAnimator.SetTrigger("AnimateMe");
+    }
+
+    public void FinalThanksAnimator()
+    {
+        m_FinalThanksLineAnimator.SetTrigger("AnimateMe");
     }
 }

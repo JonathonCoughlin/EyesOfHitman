@@ -88,6 +88,7 @@ public class HitmanGameManager : MonoBehaviour {
             case GameState.ControlRoom:
                 {
                     m_BallroomSequence.TransitionSequence();
+                    m_BathroomSequence.LowResourceSequence();
                     m_HoFSequence.EndSequence();
                     m_RedCarpetSequence.EndRedCarpetSequence();
                     m_ControlRoomSequence.StartSequence();
@@ -97,6 +98,7 @@ public class HitmanGameManager : MonoBehaviour {
             case GameState.Assassination:
                 {
                     m_BallroomSequence.TransitionSequence();
+                    m_BathroomSequence.LowResourceSequence();
                     m_AssassinationSequence.Animate();
                     m_RedCarpetSequence.EndRedCarpetSequence();
                     m_RedCarpetSequence.TurnOnLights();
@@ -139,7 +141,7 @@ public class HitmanGameManager : MonoBehaviour {
 
             case GameState.Ballroom:
                 {
-                    m_BathroomSequence.EndSequence();
+                    m_BathroomSequence.LowResourceSequence();
                     m_BallroomSequence.TransitionSequence();
                     
                     if (m_ballroomCount < 1)
@@ -161,14 +163,14 @@ public class HitmanGameManager : MonoBehaviour {
                 }
             case GameState.ControlRoom:
                 {
-
+                    m_BathroomSequence.EndSequence();
+                    m_ControlRoomSequence.StartSequence();
                     break;
                 }
 
             case GameState.Assassination:
                 {
                     m_AssassinationSequence.Animate();
-
                     break;
                 }
 
