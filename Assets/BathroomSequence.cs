@@ -27,6 +27,7 @@ public class BathroomSequence : MonoBehaviour {
     {
         TurnOffLights();
         TurnOffReflections();
+        m_BackgroundMusic.Stop();
     }
 
     public void TurnOffReflections()

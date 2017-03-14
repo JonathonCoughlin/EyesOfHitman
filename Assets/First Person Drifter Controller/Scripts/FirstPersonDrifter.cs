@@ -67,6 +67,11 @@ public class FirstPersonDrifter: MonoBehaviour
     private HeadBob headBobScript;
     private GameObject targetToTrack;
 
+
+    //Camera State Memory
+    private bool m_camAwaitingReset = false;
+    private Vector3 m_camMemoryPosition;
+    private Vector3 m_camMemoryRotation;
  
     void Start()
     {
@@ -82,6 +87,10 @@ public class FirstPersonDrifter: MonoBehaviour
 
     public void SwitchControlTypes(WalkControlLimits walkControl, LookControlLimits lookControl)
     {
+        if (lookControl != LookControlLimits.FullControl)
+        {
+            m_camAwaitingReset = true;
+        }
         walkControlLimit = walkControl;
         lookControlLimit = lookControl;
         SetLookControls();
@@ -114,6 +123,12 @@ public class FirstPersonDrifter: MonoBehaviour
                     verticalMouseLook.minimumY = -85f;
                     verticalMouseLook.maximumY = 85f;
                     fpCamera.transform.parent = this.transform;
+                    if (m_camAwaitingReset)
+                    {
+                        fpCamera.transform.localPosition = m_camMemoryPosition;
+                        fpCamera.transform.localRotation = Quaternion.Euler(m_camMemoryRotation.x, m_camMemoryRotation.y, m_camMemoryRotation.z);
+                        m_camAwaitingReset = false;
+                    }
                     headBobScript.enabled = true;
                     horizontalMouseLook.StopTracking();
                     break;
@@ -125,6 +140,8 @@ public class FirstPersonDrifter: MonoBehaviour
                     verticalMouseLook.minimumY = 0f;
                     verticalMouseLook.maximumY = 0f;
                     headBobScript.enabled = false;
+                    m_camMemoryPosition = fpCamera.transform.localPosition;
+                    m_camMemoryRotation = fpCamera.transform.localEulerAngles;
                     fpCamera.transform.parent = HeadBone.transform;
                     horizontalMouseLook.StopTracking();
                     break;
@@ -137,6 +154,8 @@ public class FirstPersonDrifter: MonoBehaviour
                     verticalMouseLook.minimumY = -85f;
                     verticalMouseLook.maximumY = 85f;
                     headBobScript.enabled = false;
+                    m_camMemoryPosition = fpCamera.transform.localPosition;
+                    m_camMemoryRotation = fpCamera.transform.localEulerAngles;
                     fpCamera.transform.parent = HeadBone.transform;
                     horizontalMouseLook.StopTracking();
                     break;
@@ -149,12 +168,16 @@ public class FirstPersonDrifter: MonoBehaviour
                     verticalMouseLook.minimumY = 0f;
                     verticalMouseLook.maximumY = 0f;
                     headBobScript.enabled = false;
+                    m_camMemoryPosition = fpCamera.transform.localPosition;
+                    m_camMemoryRotation = fpCamera.transform.localEulerAngles;
                     fpCamera.transform.parent = HeadBone.transform;
                     horizontalMouseLook.StopTracking();
                     break;
                 }
             case LookControlLimits.TrackTarget:
                 {
+                    m_camMemoryPosition = fpCamera.transform.localPosition;
+                    m_camMemoryRotation = fpCamera.transform.localEulerAngles;
                     horizontalMouseLook.TrackThisTarget(targetToTrack);
                     break;
                 }

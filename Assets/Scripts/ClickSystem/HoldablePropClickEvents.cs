@@ -69,6 +69,7 @@ namespace JonClickSystem
             transform.localPosition = m_handBonePosOffset;
             transform.localRotation = Quaternion.Euler(m_handBoneEulerOffset.x, m_handBoneEulerOffset.y, m_handBoneEulerOffset.z);
             m_held = true;
+            GetComponent<ClickableObjectComponent>().enabled = false;
         }
 
         //Throw Stuff

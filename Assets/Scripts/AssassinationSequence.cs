@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class AssassinationSequence : MonoBehaviour {
@@ -187,5 +188,11 @@ public class AssassinationSequence : MonoBehaviour {
     {
         m_47.SwingAxe();
     }
+
+    public void LoadCreditsScene()
+    {
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
+    }
+
 
 }

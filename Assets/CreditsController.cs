@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class CreditsController : MonoBehaviour {
@@ -125,4 +126,6 @@ public class CreditsController : MonoBehaviour {
     {
         m_FinalThanksLineAnimator.SetTrigger("AnimateMe");
     }
+
+    
 }

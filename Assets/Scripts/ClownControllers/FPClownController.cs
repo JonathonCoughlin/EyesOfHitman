@@ -26,6 +26,10 @@ public class FPClownController : MonoBehaviour {
     //Tracking Helpers
     public GameObject m_waiterTrackTarget;
 
+    //Dance Keys
+    public KeyCode m_dabKey;
+    public KeyCode m_aaaKey;
+
 	// Use this for initialization
 	void Start () {
         SetComponents();
@@ -74,9 +78,23 @@ public class FPClownController : MonoBehaviour {
         m_Animator.SetTrigger("LookAtHands");
     }
 
+    public void DabFP()
+    {
+        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.VerticalOnly);
+        m_playerControl = false;
+        m_Animator.SetTrigger("DabFP");
+    }
+
+    public void AAAFP()
+    {
+        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.VerticalOnly);
+        m_playerControl = false;
+        m_Animator.SetTrigger("AAAFP");
+    }
+
     public void DisabledWaiter()
     {
-        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.NoControl);
+        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.VerticalOnly);
         m_playerControl = false;
         m_Animator.SetTrigger("DisabledWaiter");
     }
@@ -118,7 +136,8 @@ public class FPClownController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         ManageWalkAnimation();
-        if (m_holdingProp) ManageProp();
+        ManageDances();
+        if (m_holdingProp && !m_playerControl) ManageProp();
 	}
 
     private void ManageWalkAnimation()
@@ -128,6 +147,20 @@ public class FPClownController : MonoBehaviour {
         {
             m_Unicycle.GetComponent<Animator>().SetBool("Cycling", m_Drifter.walking);
         }        
+    }
+
+    private void ManageDances()
+    {
+        if (m_playerControl)
+        {
+            if (Input.GetKeyDown(m_dabKey))
+            {
+                DabFP();
+            } else if (Input.GetKeyDown(m_aaaKey))
+            {
+                AAAFP();
+            }
+        }
     }
 
     private void ManageProp()
