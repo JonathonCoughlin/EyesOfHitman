@@ -80,6 +80,7 @@ public class AssassinationSequence : MonoBehaviour {
         m_NewBoat.SetActive(true);
         m_FP47.MakeMeAChildOfYourPeace(m_LandingTarget);
         m_FP47.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.NoControl);
+        m_FP47.GetComponent<FPClownController>().KillProp();
 
         m_Animator.SetTrigger("Animate");
     }

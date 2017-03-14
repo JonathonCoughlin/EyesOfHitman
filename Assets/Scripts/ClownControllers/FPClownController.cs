@@ -206,6 +206,13 @@ public class FPClownController : MonoBehaviour {
 
     }
 
-
+    public void KillProp()
+    {
+        m_holdingProp = false;
+        m_Animator.SetBool("HoldingObject", false);
+        m_Animator.SetBool("HoldingAxe", false);
+        m_Animator.SetTrigger("KillProp");
+        GameObject.Destroy(m_prop.gameObject);
+    }
 
 }
