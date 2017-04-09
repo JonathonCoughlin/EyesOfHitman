@@ -7,6 +7,7 @@ public class FishingSequence : MonoBehaviour {
 
     //Components
     private Animator m_animator;
+    public TutorialCanvas m_TutorialCanvas;
     
     //FishingSequence
     public SplineWalker fishingBoatWalker;
@@ -116,6 +117,6 @@ public class FishingSequence : MonoBehaviour {
     {
         HitmanGameManager.KillAllCameras();
         fishing47.ActivateFPControl();
-
+        m_TutorialCanvas.ShowClickKeys();
     }
 }

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum AudioTriggerType { Enter, Exit, EnterTwice }
+public enum AudioTriggerType { Enter, Exit, EnterTwice, RepeatOnEnter }
 
+[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(AudioSource))]
 public class AudioTrigger : MonoBehaviour {
 
@@ -127,7 +128,8 @@ public class AudioTrigger : MonoBehaviour {
             {
                 case 1:
                     {
-                        if (m_triggerType == AudioTriggerType.Enter)
+                        if (m_triggerType == AudioTriggerType.Enter ||
+                            m_triggerType == AudioTriggerType.RepeatOnEnter)
                         {
                             if (m_rampAudio)
                             {
@@ -142,7 +144,8 @@ public class AudioTrigger : MonoBehaviour {
                     }
                 case 2:
                     {
-                        if (m_triggerType == AudioTriggerType.EnterTwice)
+                        if (m_triggerType == AudioTriggerType.EnterTwice || 
+                            m_triggerType == AudioTriggerType.RepeatOnEnter)
                         {
                             if (m_rampAudio)
                             {
@@ -152,6 +155,18 @@ public class AudioTrigger : MonoBehaviour {
                             {
                                 PlayDialog();
                             }
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        if (m_rampAudio)
+                        {
+                            BeginSpeaking();
+                        }
+                        else
+                        {
+                            PlayDialog();
                         }
                         break;
                     }
@@ -192,6 +207,7 @@ public class AudioTrigger : MonoBehaviour {
 
     public void Speak()
     {
+        m_Voice.clip = m_dialogClip;
         m_Voice.Play();
         m_vocal = true;
         m_timeSinceClipEnd = 0f;

@@ -13,6 +13,7 @@ public class RedCarpetSequence : MonoBehaviour {
     public FlashCamera FlickerCam1;
     public FlashCamera FlickerCam2;
     public AudioSource Mumbler;
+    public TutorialCanvas m_TutorialCanvas;
 
     //Things to turn off
     public List<SplineWalker> m_Cars;
@@ -39,6 +40,7 @@ public class RedCarpetSequence : MonoBehaviour {
         ActivateCars();
         ActivateFPControl();
         m_BackgroundMusic.Play();
+        m_TutorialCanvas.ShowDanceKeys();
     }
 
     public void PauseRedCarpetSequence()

@@ -10,6 +10,7 @@ public class Fishing47 : MonoBehaviour {
     public SingleFish m_Fish;
     public SplineWalker m_BoatWalker;
     public GameObject m_FishingPole;
+    public TutorialCanvas m_TutorialCanvas;
 
     //States
     private bool m_playerControl;
@@ -69,6 +70,7 @@ public class Fishing47 : MonoBehaviour {
         m_FishingState = FishingMachine.DoneFishing;
         DropPoleAndFish();
         ActivateFPWalk();
+        m_TutorialCanvas.ShowWalkKeys();
     }
 
     public void ActivateFPControl()
