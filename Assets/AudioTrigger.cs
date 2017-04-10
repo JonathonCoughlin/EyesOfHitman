@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using FirstPersonExploration;
 
 public enum AudioTriggerType { Enter, Exit, EnterTwice, RepeatOnEnter }
 
@@ -17,6 +18,10 @@ public class AudioTrigger : MonoBehaviour {
 
     public bool m_triggerOnAlternativeObject = false;
     public GameObject m_triggerObject;
+
+    //Vocal Queue Options
+    public bool m_registerInVocalQueue;
+    public VocalQueuer m_VocalQueue;
 
 
     //Speech States
@@ -124,52 +129,59 @@ public class AudioTrigger : MonoBehaviour {
         if (properGameObject)
         {
             m_enterCount++;
-            switch (m_enterCount)
+            if (m_triggerType != AudioTriggerType.Exit)
             {
-                case 1:
-                    {
-                        if (m_triggerType == AudioTriggerType.Enter ||
-                            m_triggerType == AudioTriggerType.RepeatOnEnter)
+                switch (m_enterCount)
+                {
+                    case 1:
                         {
-                            if (m_rampAudio)
+                            if (m_triggerType == AudioTriggerType.Enter ||
+                                m_triggerType == AudioTriggerType.RepeatOnEnter)
                             {
-                                BeginSpeaking();
-                            } else
-                            {
-                                PlayDialog();
+                                if (m_rampAudio)
+                                {
+                                    BeginSpeaking();
+                                }
+                                else
+                                {
+                                    PlayDialog();
+                                }
+
                             }
-                            
+                            break;
                         }
-                        break;
-                    }
-                case 2:
-                    {
-                        if (m_triggerType == AudioTriggerType.EnterTwice || 
-                            m_triggerType == AudioTriggerType.RepeatOnEnter)
+                    case 2:
                         {
-                            if (m_rampAudio)
+                            if (m_triggerType == AudioTriggerType.EnterTwice ||
+                                m_triggerType == AudioTriggerType.RepeatOnEnter)
                             {
-                                BeginSpeaking();
+                                if (m_rampAudio)
+                                {
+                                    BeginSpeaking();
+                                }
+                                else
+                                {
+                                    PlayDialog();
+                                }
                             }
-                            else
+                            break;
+                        }
+                    default:
+                        {
+                            if (m_triggerType == AudioTriggerType.RepeatOnEnter)
                             {
-                                PlayDialog();
+                                if (m_rampAudio)
+                                {
+                                    BeginSpeaking();
+                                }
+                                else
+                                {
+                                    PlayDialog();
+                                }
                             }
+                            break;
                         }
-                        break;
-                    }
-                default:
-                    {
-                        if (m_rampAudio)
-                        {
-                            BeginSpeaking();
-                        }
-                        else
-                        {
-                            PlayDialog();
-                        }
-                        break;
-                    }
+                }
             }
         }
     }
@@ -228,7 +240,14 @@ public class AudioTrigger : MonoBehaviour {
             m_Voice.Play();
         } else
         {
-            m_Voice.PlayOneShot(m_dialogClip);
+            if (m_registerInVocalQueue)
+            {
+                m_VocalQueue.AddAudioToQueue(m_dialogClip);
+            } else
+            {
+                m_Voice.PlayOneShot(m_dialogClip);
+            }
+            
         }        
     }
 
