@@ -20,14 +20,8 @@ public class Unicycle : MonoBehaviour {
 	
 	}
 
-    public void CycleOn()
+    public void SetCycleAnimation(bool animateCycle)
     {
-        m_Animator.SetBool("Cycling", true);
+        m_Animator.SetBool("Cycling", animateCycle);
     }
-
-    public void CycleOff()
-    {
-        m_Animator.SetBool("Cycling", false);
-    }
-
 }

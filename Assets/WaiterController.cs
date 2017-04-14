@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(SplineWalker))]
 public class WaiterController : MonoBehaviour {
 
     public Unicycle m_Cycle;
     private Animator m_Animator;
+    private SplineWalker m_SplineWalker;
 
     private bool m_cycling = false;
 
@@ -16,19 +18,22 @@ public class WaiterController : MonoBehaviour {
     private void SetComponents()
     {
         m_Animator = GetComponent<Animator>();
+        m_SplineWalker = GetComponent<SplineWalker>();
     }
 
     // Update is called once per frame
     void Update () {
-	    if (!m_cycling)
+        bool walkerPaused = m_SplineWalker.m_paused;
+	    if (walkerPaused == m_cycling)
         {
-            CycleOn();
-        }
+            ManageCycleAnimation(!walkerPaused);
+        } 
 	}
 
-    private void CycleOn()
+    private void ManageCycleAnimation(bool tempCue)
     {
-        m_Animator.SetBool("Cycling",true);
-        m_Cycle.CycleOn();
+        m_cycling = tempCue;
+        m_Animator.SetBool("Cycling",m_cycling);
+        m_Cycle.SetCycleAnimation(m_cycling);
     }
 }
