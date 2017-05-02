@@ -27,6 +27,9 @@ namespace JonClickSystem
             if (!m_LightOn)
             {
                 On();
+            } else
+            {
+                Off();
             }
             
         }
@@ -40,5 +43,13 @@ namespace JonClickSystem
             reportCueMaster.CannonLightOn();
         }
         
+        private void Off()
+        {
+            m_CanonLight.TurnOff();
+            m_buttonClickSounder.PlayOneShot(m_buttonClickSounder.clip);
+            m_LightOn = false;
+            AssassinationCues reportCueMaster = (AssassinationCues)FindObjectOfType(typeof(AssassinationCues));
+            reportCueMaster.CannonLightOff();
+        }
     }
 }

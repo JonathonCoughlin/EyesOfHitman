@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using JonClickSystem;
-
+using FirstPersonExploration;
 
 [RequireComponent(typeof(AudioSource))]
 public class AssassinationCues : MonoBehaviour {
@@ -13,7 +13,7 @@ public class AssassinationCues : MonoBehaviour {
     //Objects
     public BlendoCut BallroomDoor;
     public BlendoCut ControlRoomDoor;
-    public HoldablePropClickEvents Axe;
+    public Prop Axe;
     public CanonClickEvents LightSwitch;
     public PlayButtonClickEvents PlayButton;
 
@@ -23,6 +23,8 @@ public class AssassinationCues : MonoBehaviour {
 
 
     //States
+    private bool spotlightActivated = false;
+    private bool axeHeld = false;
     private bool readyForPlayButton = false;
 
 	// Use this for initialization
@@ -49,8 +51,13 @@ public class AssassinationCues : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (m_Game.m_GameState == GameState.ControlRoom && !axeHeld) CheckAxe();
 	}
+
+    private void CheckAxe()
+    {
+        if (Axe.AmHeld()) HoldingAxe();
+    }
     
     public void WaiterFound()
     {
@@ -73,20 +80,24 @@ public class AssassinationCues : MonoBehaviour {
     {
         //Speak about pulley
         m_DialogVoice.PlayOneShot(m_pulleyDialog);
-
+        axeHeld = true;
         //Open Light Switch
         LightSwitch.enabled = true;
     }
 
     public void CannonLightOn()
     {
-        //WaitForPlayButton
-        readyForPlayButton = true;
+        spotlightActivated = true;
+    }
+
+    public void CannonLightOff()
+    {
+        spotlightActivated = false;
     }
 
     public void PlayButtonPress()
     {
-        if (readyForPlayButton)
+        if (axeHeld && spotlightActivated)
         {
             CueAssassination();
         }

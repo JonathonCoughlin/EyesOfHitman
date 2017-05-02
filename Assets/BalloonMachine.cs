@@ -19,12 +19,7 @@ public class BalloonMachine : MonoBehaviour {
     {
         m_Animator = GetComponent<Animator>();
     }
-
-	// Update is called once per frame
-	void Update () {
-	    
-	}
-
+    
     private void MakeBalloon()
     {
         GameObject balloonObject = (GameObject)Instantiate(balloonPrefab);
@@ -39,22 +34,23 @@ public class BalloonMachine : MonoBehaviour {
 
     public void PauseInflation()
     {
+        m_Animator.speed = 0f;
         m_Balloon.PauseInflate();
     }
 
     public void ReleaseBalloon()
     {
-
+        m_Balloon.FloatAway();
     }
 
     public void On()
     {
         m_Animator.SetBool("On", true);
+        m_Animator.speed = 1f;
     }
 
     public void Off()
     {
-        m_Animator.SetBool("On", false);
         PauseInflation();
     }
 }

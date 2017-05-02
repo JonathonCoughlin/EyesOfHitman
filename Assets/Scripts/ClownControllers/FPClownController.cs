@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using JonClickSystem;
+using FirstPersonExploration;
 
 [RequireComponent(typeof(FirstPersonDrifter))]
 public class FPClownController : MonoBehaviour {
 
     private FirstPersonDrifter m_Drifter;
     public Animator m_Animator;
+    private FPExplorer m_FPExplorer;
 
     //Prop Holding Stuff
     public bool m_holdingProp { get; private set; }
@@ -22,6 +24,7 @@ public class FPClownController : MonoBehaviour {
 
     //Player Control
     private bool m_playerControl = false;
+    private WalkControlLimits m_currentFPWalkControl = WalkControlLimits.FullControl;
 
     //Tracking Helpers
     public GameObject m_waiterTrackTarget;
@@ -40,6 +43,7 @@ public class FPClownController : MonoBehaviour {
     private void SetComponents()
     {
         m_Drifter = GetComponent<FirstPersonDrifter>();
+        m_FPExplorer = GetComponent<FPExplorer>();
     }
 
     private void ManageUnicycleVisibility()
@@ -60,6 +64,8 @@ public class FPClownController : MonoBehaviour {
         m_onUnicycle = true;
         ManageUnicycleVisibility();
         m_Cheese.SetActive(true);
+        m_currentFPWalkControl = WalkControlLimits.AxialOnly;
+        ActivateFPControl();
         m_HeadBob.enabled = false;
     }
 
@@ -68,6 +74,8 @@ public class FPClownController : MonoBehaviour {
         m_onUnicycle = false;
         m_Cheese.SetActive(false);
         ManageUnicycleVisibility();
+        m_currentFPWalkControl = WalkControlLimits.FullControl;
+        ActivateFPControl();
         m_HeadBob.enabled = true;
     }
 
@@ -129,7 +137,7 @@ public class FPClownController : MonoBehaviour {
     public void ActivateFPControl()
     {
         m_Drifter.SetMainCamera();
-        m_Drifter.SwitchControlTypes(WalkControlLimits.FullControl, LookControlLimits.FullControl);
+        m_Drifter.SwitchControlTypes(m_currentFPWalkControl, LookControlLimits.FullControl);
         m_playerControl = true;
     }
 
@@ -182,23 +190,23 @@ public class FPClownController : MonoBehaviour {
         }
     }
 
-    public void GrabProp(GameObject prop)
-    {
-        m_holdingProp = true;
-        m_prop = prop.GetComponent<HoldablePropClickEvents>();
-        m_PropHelper.m_prop = prop.GetComponent<HoldablePropClickEvents>();
-        m_Animator.SetTrigger("Grab");
-        if (prop.tag == "axe")
-        {
-            m_Animator.SetBool("HoldingObject", true);
-            m_Animator.SetBool("HoldingAxe", true);
-        }
-        else
-        {
-            m_Animator.SetBool("HoldingObject", true);
-            m_Animator.SetBool("HoldingAxe", false);
-        }
-    }
+    //public void GrabProp(GameObject prop)
+    //{
+    //    m_holdingProp = true;
+    //    m_prop = prop.GetComponent<HoldablePropClickEvents>();
+    //    m_PropHelper.m_prop = prop.GetComponent<HoldablePropClickEvents>();
+    //    m_Animator.SetTrigger("Grab");
+    //    if (prop.tag == "axe")
+    //    {
+    //        m_Animator.SetBool("HoldingObject", true);
+    //        m_Animator.SetBool("HoldingAxe", true);
+    //    }
+    //    else
+    //    {
+    //        m_Animator.SetBool("HoldingObject", true);
+    //        m_Animator.SetBool("HoldingAxe", false);
+    //    }
+    //}
     
 
     private void ThrowProp()
@@ -208,11 +216,21 @@ public class FPClownController : MonoBehaviour {
 
     public void KillProp()
     {
-        m_holdingProp = false;
-        m_Animator.SetBool("HoldingObject", false);
-        m_Animator.SetBool("HoldingAxe", false);
-        m_Animator.SetTrigger("KillProp");
-        GameObject.Destroy(m_prop.gameObject);
+
+        m_FPExplorer.DestroyProp();
+        //if (m_holdingProp)
+        //{
+        //    //Legacy Prop System
+        //    m_holdingProp = false;
+        //    m_Animator.SetBool("HoldingObject", false);
+        //    m_Animator.SetBool("HoldingAxe", false);
+        //    m_Animator.SetTrigger("KillProp");
+        //    GameObject.Destroy(m_prop.gameObject);
+        //} else
+        //{
+        //    m_FPExplorer.DestroyProp();
+        //}
+        
     }
 
 }

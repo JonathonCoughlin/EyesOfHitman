@@ -1,37 +1,17 @@
 fileFormatVersion: 2
-guid: a591e9c03d7fbb4498e632572baab8f3
-timeCreated: 1480801707
+guid: fd11a2bfc2f8e54488ca3a07458633bb
+timeCreated: 1490641910
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: dartBoard
-    100002: //RootNode
-    100004: dartBoard_chalk
-    100006: dartBoard_leftDoor
-    100008: dartBoard_rightDoor
-    100010: dartBoard_target
-    400000: dartBoard
-    400002: //RootNode
-    400004: dartBoard_chalk
-    400006: dartBoard_leftDoor
-    400008: dartBoard_rightDoor
-    400010: dartBoard_target
-    2300000: dartBoard
-    2300002: dartBoard_chalk
-    2300004: dartBoard_leftDoor
-    2300006: dartBoard_rightDoor
-    2300008: dartBoard_target
-    3300000: dartBoard
-    3300002: dartBoard_chalk
-    3300004: dartBoard_leftDoor
-    3300006: dartBoard_rightDoor
-    3300008: dartBoard_target
-    4300000: dartBoard
-    4300002: dartBoard_chalk
-    4300004: dartBoard_leftDoor
-    4300006: dartBoard_rightDoor
-    4300008: dartBoard_target
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube
+    7400000: Default Take
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,7 +19,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleCurves: 1
+    resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
@@ -56,7 +36,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.04
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -75,7 +55,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []
@@ -90,7 +70,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

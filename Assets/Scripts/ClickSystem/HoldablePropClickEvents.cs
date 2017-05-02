@@ -54,7 +54,7 @@ namespace JonClickSystem
         private void GiveMeToPlayer()
         {
             
-            player.GrabProp(this.gameObject);
+            //player.GrabProp(this.gameObject);
 
             if (FindObjectOfType(typeof(AssassinationCues)))
             {

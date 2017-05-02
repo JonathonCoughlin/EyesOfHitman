@@ -5,7 +5,6 @@ using FirstPersonExploration;
 
 public class GrabPropHelper : MonoBehaviour {
 
-    public HoldablePropClickEvents m_prop;
     private GameObject m_Player;
     private FPExplorer m_FPExplorer;
 
@@ -19,16 +18,6 @@ public class GrabPropHelper : MonoBehaviour {
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_FPExplorer = m_Player.GetComponent<FPExplorer>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    public void PutPropInHand()
-    {
-        m_prop.GrabMe();
-    }
 
     public void PlayActionAudio()
     {
@@ -41,13 +30,6 @@ public class GrabPropHelper : MonoBehaviour {
     }
 
     public void ThrowProp()
-    {
-        Transform camPos = Camera.main.transform;
-        Ray throwRay = new Ray(camPos.position, camPos.forward);
-        m_prop.ThrowMe(throwRay.direction);
-    }
-
-    public void ThrowProp2()
     {
         m_FPExplorer.ThrowProp();
     }

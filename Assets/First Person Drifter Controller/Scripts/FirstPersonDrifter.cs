@@ -126,7 +126,7 @@ public class FirstPersonDrifter: MonoBehaviour
                     if (m_camAwaitingReset)
                     {
                         fpCamera.transform.localPosition = m_camMemoryPosition;
-                        fpCamera.transform.localRotation = Quaternion.Euler(m_camMemoryRotation.x, m_camMemoryRotation.y, m_camMemoryRotation.z);
+                        //fpCamera.transform.localRotation = Quaternion.Euler(m_camMemoryRotation.x, m_camMemoryRotation.y, m_camMemoryRotation.z);
                         m_camAwaitingReset = false;
                     }
                     headBobScript.enabled = true;

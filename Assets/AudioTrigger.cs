@@ -129,6 +129,23 @@ public class AudioTrigger : MonoBehaviour {
         if (properGameObject)
         {
             m_enterCount++;
+            switch (m_triggerType)
+            {
+                case AudioTriggerType.Enter:
+                    {
+
+                        break;
+                    }
+                case AudioTriggerType.EnterTwice:
+                    {
+                        break;
+                    }
+                case AudioTriggerType.RepeatOnEnter:
+                    {
+                        break;
+                    }
+            }
+
             if (m_triggerType != AudioTriggerType.Exit)
             {
                 switch (m_enterCount)

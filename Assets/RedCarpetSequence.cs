@@ -10,8 +10,7 @@ public class RedCarpetSequence : MonoBehaviour {
     public FPClownController FP47Controller;
     private AudioSource m_BackgroundMusic;
     public TableClown LippyStatic;
-    public FlashCamera FlickerCam1;
-    public FlashCamera FlickerCam2;
+    
     public AudioSource Mumbler;
     public TutorialCanvas m_TutorialCanvas;
 
@@ -55,8 +54,7 @@ public class RedCarpetSequence : MonoBehaviour {
         KillCars();
         m_BackgroundMusic.Stop();
         Destroy(LippyStatic.gameObject);
-        Destroy(FlickerCam1.gameObject);
-        Destroy(FlickerCam2.gameObject);
+
         Destroy(Mumbler.gameObject);
     }
 

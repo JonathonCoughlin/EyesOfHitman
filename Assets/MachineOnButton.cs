@@ -1,22 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using FirstPersonExploration;
 
-public class MachineOnButton : MonoBehaviour {
+public class MachineOnButton : Button {
 
     public BalloonMachine m_Machine;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    private void OnButton()
+    public override void RegisterClick()
     {
+        base.RegisterClick();
         m_Machine.On();
     }
 

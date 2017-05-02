@@ -1,24 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using FirstPersonExploration;
 
-public class MachineOffButton : MonoBehaviour {
+public class MachineOffButton : Button
+{
 
     public BalloonMachine m_Machine;
 
-    // Use this for initialization
-    void Start()
+    public override void RegisterClick()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OffButton()
-    {
+        base.RegisterClick();
         m_Machine.Off();
     }
+
 }
