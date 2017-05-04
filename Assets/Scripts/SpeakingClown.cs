@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Animator))]
 public class SpeakingClown : MonoBehaviour {
 
@@ -34,9 +33,11 @@ public class SpeakingClown : MonoBehaviour {
     private void SetComponents()
     {
         m_Voice = GetComponent<AudioSource>();
-        m_Voice.clip = m_Story;
+        if(m_Voice != null)
+            m_Voice.clip = m_Story;
         m_Animator = GetComponent<Animator>();
-        m_maxVolume = m_Voice.volume;
+        if (m_Voice != null)
+            m_maxVolume = m_Voice.volume;
         SetAnimationFromKey();
         SilenceMe();
     }
@@ -57,7 +58,7 @@ public class SpeakingClown : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	    if (m_vocal)
+	    if (m_vocal && m_Voice != null)
         {
             m_Voice.volume += m_rampSlope * Time.deltaTime;
             if (m_Voice.volume <= 0f)
@@ -88,8 +89,12 @@ public class SpeakingClown : MonoBehaviour {
     //Speech
     public void SilenceMe()
     {
-        m_Voice.volume = 0f;
-        m_Voice.Stop();
+        if (m_Voice != null)
+        {
+            m_Voice.volume = 0f;
+            m_Voice.Stop();
+
+        }
     }
 
     public void BeginSpeaking()
@@ -117,14 +122,16 @@ public class SpeakingClown : MonoBehaviour {
 
     public void Speak()
     {
-        m_Voice.Play();
+        if (m_Voice != null)
+            m_Voice.Play();
         m_vocal = true;
         m_timeSinceClipEnd = 0f;
     }
 
     public void PauseSpeak()
     {
-        m_Voice.Pause();
+        if (m_Voice != null)
+            m_Voice.Pause();
         m_vocal = false;
     }
 

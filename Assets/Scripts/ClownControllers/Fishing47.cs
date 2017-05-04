@@ -8,6 +8,9 @@ public class Fishing47 : MonoBehaviour {
     private Animator m_Animator;
     public FirstPersonDrifter m_Drifter;
     public SingleFish m_Fish;
+    public GameObject m_Hook;
+    public GameObject m_FishHoldingHand;
+    private SingleFish m_fishInstance;
     public SplineWalker m_BoatWalker;
     public GameObject m_FishingPole;
     public TutorialCanvas m_TutorialCanvas;
@@ -15,7 +18,9 @@ public class Fishing47 : MonoBehaviour {
     //States
     private bool m_playerControl;
     public enum FishingMachine { Idle, Fishing, DoneFishing}
+    public enum FishermanStatus { NoFish, Catching}
     public FishingMachine m_FishingState;
+    public FishermanStatus m_FishermanStatus;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +30,7 @@ public class Fishing47 : MonoBehaviour {
     private void SetComponents()
     {
         m_Animator = GetComponent<Animator>();
+        m_FishermanStatus = FishermanStatus.NoFish;
     }
 
 	// Update is called once per frame
@@ -40,7 +46,22 @@ public class Fishing47 : MonoBehaviour {
                             m_Animator.SetTrigger("FishingAction");
                             m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.VerticalOnly);
                             m_FishingState = FishingMachine.Fishing;
-                            m_Fish.FishermanAction();
+                            switch (m_FishermanStatus)
+                            {
+                                case FishermanStatus.NoFish:
+                                    {
+                                        SpawnFish();
+                                        m_FishermanStatus = FishermanStatus.Catching;                                        
+                                        break;
+                                    }
+                                case FishermanStatus.Catching:
+                                    {
+                                        m_FishermanStatus = FishermanStatus.NoFish;
+                                        break;
+                                    }
+                                
+                            }                            
+                            m_fishInstance.FishermanAction();
                         }
 
                         if (m_BoatWalker.SplinePos() >= 1f)
@@ -63,6 +84,12 @@ public class Fishing47 : MonoBehaviour {
 
 
         }
+    }
+
+    public void SpawnFish()
+    {
+        m_fishInstance = (SingleFish)Instantiate(m_Fish);
+        m_fishInstance.InitializeMe(m_Hook,m_FishHoldingHand);
     }
 
     public void QuitFishing()

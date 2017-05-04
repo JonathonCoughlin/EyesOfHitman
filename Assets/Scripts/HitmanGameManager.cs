@@ -51,7 +51,7 @@ public class HitmanGameManager : MonoBehaviour {
         {
             case GameState.Title:
                 {
-                    m_FishingSequence.StartFishingSequence();
+                    m_FishingSequence.StartFishingSequence(freeRoamTest);
                     break;
                 }
 
@@ -121,7 +121,7 @@ public class HitmanGameManager : MonoBehaviour {
         {
             case GameState.Title:
                 {
-                    m_FishingSequence.StartFishingSequence();
+                    m_FishingSequence.StartFishingSequence(freeRoamTest);
                     break;
                 }
 

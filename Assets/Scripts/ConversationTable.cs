@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using EyeOfHitman;
 
 [RequireComponent(typeof(Collider))]
 public class ConversationTable : MonoBehaviour
@@ -18,7 +19,7 @@ public class ConversationTable : MonoBehaviour
 
     //Components
     private Collider m_collider;
-
+    private Dialog m_dialog;
     // Use this for initialization
     void Start()
     {
@@ -29,6 +30,7 @@ public class ConversationTable : MonoBehaviour
     private void SetComponents()
     {
         m_collider = GetComponent<Collider>();
+        m_dialog = GetComponent<Dialog>();
     }
 
     private void SetSpeakingClown()
@@ -49,6 +51,10 @@ public class ConversationTable : MonoBehaviour
         if (other.tag == "Player")
         {
             m_Speaker.BeginSpeaking();
+            if (m_dialog != null)
+            {
+                m_dialog.StartDialog();
+            }
         }
     }
 
@@ -57,6 +63,10 @@ public class ConversationTable : MonoBehaviour
         if (other.tag == "Player")
         {
             m_Speaker.EndSpeaking();
+            if (m_dialog != null)
+            {
+                m_dialog.StopDialog();
+            }
         }
     }
 }

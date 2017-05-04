@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using EyeOfHitman;
 
 public class ClownShuffler : MonoBehaviour
 {
@@ -65,6 +66,11 @@ public class ClownShuffler : MonoBehaviour
     private void SetHead()
     {
         m_HeadRenderer.material = m_HeadLibrary[m_currentHeadID];
+        DialogParticipant participant = GetComponent<DialogParticipant>();
+        if (participant != null)
+        {
+            participant.RefreshTextures();
+        }
     }
 
     private void ShuffleBody()

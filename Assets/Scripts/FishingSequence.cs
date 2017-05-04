@@ -31,6 +31,7 @@ public class FishingSequence : MonoBehaviour {
     public GameObject titleText;
     private SplineWalker titleWalker;
 
+    private bool m_freeRoamStart = false;
 
     // Use this for initialization
 	void Start () {
@@ -60,8 +61,9 @@ public class FishingSequence : MonoBehaviour {
         Destroy(fp47.gameObject);
     }
 
-    public void StartFishingSequence()
+    public void StartFishingSequence(bool freeRoamStart)
     {
+        m_freeRoamStart = freeRoamStart;
         m_animator.SetTrigger("BeginSequence");
     }
 
@@ -71,6 +73,10 @@ public class FishingSequence : MonoBehaviour {
         cameraTarget.StartWalking();
         camWalker.StartWalking();
         HitmanGameManager.ActivateCameraAndListen(descendingCamera); 
+        if (m_freeRoamStart)
+        {
+            GoFirstPerson();
+        }
     }
 
     public void StartTalking()
