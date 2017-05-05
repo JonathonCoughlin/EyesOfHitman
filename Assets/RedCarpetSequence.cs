@@ -28,11 +28,6 @@ public class RedCarpetSequence : MonoBehaviour {
         m_BackgroundMusic = GetComponent<AudioSource>();
     }
 
-	// Update is called once per frame
-	void Update () {
-        
-	}
-
     public void StartRedCarpetSequence()
     {
         TurnOnLights();
@@ -54,8 +49,8 @@ public class RedCarpetSequence : MonoBehaviour {
         KillCars();
         m_BackgroundMusic.Stop();
         Destroy(LippyStatic.gameObject);
-
         Destroy(Mumbler.gameObject);
+        //Destroy Camera Men
     }
 
     public void ActivateFPControl()

@@ -16,7 +16,9 @@ using System.Collections.Generic;
 public class PauseMenu : MonoBehaviour
 {
 	public static bool paused = false;
-	
+
+    public Camera mainCameraOverride;
+
 	public float minFOV = 45.0f;
 	public float maxFOV = 100.0f;
 	
@@ -198,13 +200,22 @@ public class PauseMenu : MonoBehaviour
 	
 	void SetFOV()
 	{
-		CameraZoom zoom = Camera.main.GetComponent<CameraZoom>();
+        Camera mainCamera;
+        if (Camera.main.GetComponent<CameraZoom>() != null)
+        {
+            mainCamera = Camera.main;
+        }
+        else
+        {
+            mainCamera = mainCameraOverride;
+        }
+        CameraZoom zoom = mainCamera.GetComponent<CameraZoom>();
 		if( zoom != null )
 		{
 			zoom.SetBaseFOV(fovSlider);
 		}
 		
-		Camera.main.fieldOfView = fovSlider;
+		mainCamera.fieldOfView = fovSlider;
 		
 		PlayerPrefs.SetFloat("FOV", fovSlider);
 	}

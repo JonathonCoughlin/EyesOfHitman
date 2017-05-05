@@ -14,6 +14,9 @@ namespace FirstPersonExploration
         private GameObject m_Player;
         public Camera m_MainCamera;
 
+        //Overrides
+        public bool m_useNonCamObjAsPointer = false;
+        public GameObject m_NonCamPointer;
 
         //States
         public bool m_clicksAllowed { get; private set; }
@@ -55,7 +58,16 @@ namespace FirstPersonExploration
 
         private bool CheckLookAndRange()
         {
-            Ray cameraRay = new Ray(m_MainCamera.transform.position, m_MainCamera.transform.forward);
+            //Raycast
+            Ray cameraRay;
+            if (m_useNonCamObjAsPointer) {
+                cameraRay = m_MainCamera.ScreenPointToRay(m_MainCamera.WorldToScreenPoint(m_NonCamPointer.transform.position));
+            }
+            else
+            {
+                cameraRay = new Ray(m_MainCamera.transform.position, m_MainCamera.transform.forward);
+            }
+                
             RaycastHit staringAtWhat;
             Physics.Raycast(cameraRay, out staringAtWhat, Mathf.Infinity, m_raycastLayerMask);
             //check if the raycast hit a clickable object
@@ -65,7 +77,8 @@ namespace FirstPersonExploration
                 if (CheckPlayerRange(tempObject))
                 {
                     SetObject(tempObject);
-                } else if (m_lookingAtClickableObject)
+                }
+                else if (m_lookingAtClickableObject)
                 {
                     UnsetObject();
                 }

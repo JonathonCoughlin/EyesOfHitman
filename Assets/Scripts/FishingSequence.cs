@@ -26,6 +26,7 @@ public class FishingSequence : MonoBehaviour {
     public AudioSource titleMusic;
     public FirstPersonDrifter fp47;
     public Fishing47 fishing47;
+    public FPClownController nonFishing47;
 
     //Title
     public GameObject titleText;
@@ -72,6 +73,7 @@ public class FishingSequence : MonoBehaviour {
         HitmanGameManager.KillAllCameras();
         cameraTarget.StartWalking();
         camWalker.StartWalking();
+        nonFishing47.DeactivateFPControl();
         HitmanGameManager.ActivateCameraAndListen(descendingCamera); 
         if (m_freeRoamStart)
         {

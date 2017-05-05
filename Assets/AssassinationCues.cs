@@ -16,6 +16,7 @@ public class AssassinationCues : MonoBehaviour {
     public Prop Axe;
     public CanonClickEvents LightSwitch;
     public PlayButtonClickEvents PlayButton;
+    public GameObject BathroomWaiter;
 
     //Speaking Parts
     public AudioSource m_DialogVoice;
@@ -25,7 +26,6 @@ public class AssassinationCues : MonoBehaviour {
     //States
     private bool spotlightActivated = false;
     private bool axeHeld = false;
-    private bool readyForPlayButton = false;
 
 	// Use this for initialization
 	void Start () {
@@ -46,7 +46,6 @@ public class AssassinationCues : MonoBehaviour {
         BallroomDoor.enabled = false;
         ControlRoomDoor.enabled = false;
         Axe.enabled = false;
-        LightSwitch.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -69,6 +68,8 @@ public class AssassinationCues : MonoBehaviour {
     {
         //Open Control Room Door
         ControlRoomDoor.enabled = true;
+        BallroomDoor.enabled = false;
+        Destroy(BathroomWaiter);
     }
 
     public void EnableAxe()
@@ -81,8 +82,7 @@ public class AssassinationCues : MonoBehaviour {
         //Speak about pulley
         m_DialogVoice.PlayOneShot(m_pulleyDialog);
         axeHeld = true;
-        //Open Light Switch
-        LightSwitch.enabled = true;
+        
     }
 
     public void CannonLightOn()

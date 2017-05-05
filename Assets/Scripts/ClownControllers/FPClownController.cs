@@ -141,6 +141,12 @@ public class FPClownController : MonoBehaviour {
         m_playerControl = true;
     }
 
+    public void DeactivateFPControl()
+    {
+        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.NoControl);
+        m_playerControl = false;
+    }
+
     // Update is called once per frame
     void Update () {
         ManageWalkAnimation();

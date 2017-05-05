@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Animator))]
 public class Fishing47 : MonoBehaviour {
@@ -7,7 +8,8 @@ public class Fishing47 : MonoBehaviour {
     //Components
     private Animator m_Animator;
     public FirstPersonDrifter m_Drifter;
-    public SingleFish m_Fish;
+    public List<SingleFish> m_Fish = new List<SingleFish>();
+    private int m_fishListIDX = 0;
     public GameObject m_Hook;
     public GameObject m_FishHoldingHand;
     private SingleFish m_fishInstance;
@@ -88,8 +90,11 @@ public class Fishing47 : MonoBehaviour {
 
     public void SpawnFish()
     {
-        m_fishInstance = (SingleFish)Instantiate(m_Fish);
+        SingleFish spawnMe = m_Fish[m_fishListIDX];
+        m_fishInstance = (SingleFish)Instantiate(spawnMe);
         m_fishInstance.InitializeMe(m_Hook,m_FishHoldingHand);
+        m_fishListIDX++;
+        if (m_fishListIDX >= m_Fish.Count) m_fishListIDX = 0;
     }
 
     public void QuitFishing()
@@ -117,7 +122,7 @@ public class Fishing47 : MonoBehaviour {
     public void DropPoleAndFish()
     {
         Destroy(m_FishingPole);
-        Destroy(m_Fish.gameObject);
+        Destroy(m_fishInstance.gameObject);
     }
 
 }
