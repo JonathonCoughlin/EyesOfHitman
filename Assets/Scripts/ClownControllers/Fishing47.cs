@@ -122,7 +122,7 @@ public class Fishing47 : MonoBehaviour {
     public void DropPoleAndFish()
     {
         Destroy(m_FishingPole);
-        Destroy(m_fishInstance.gameObject);
+        if (m_fishInstance != null) Destroy(m_fishInstance.gameObject);
     }
 
 }

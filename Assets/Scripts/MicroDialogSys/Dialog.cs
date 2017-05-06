@@ -19,15 +19,22 @@ namespace EyeOfHitman
                 return;
 
             StopDialog();
-            StartCoroutine (PlayDialog ());
+            if (coroutine == null)
+            {
+                coroutine = StartCoroutine(PlayDialog());
+            }
+            else
+            {
+                Resume();
+            }
+            
 		}
 
         public void StopDialog()
         {
             if (coroutine != null)
             {
-                DialogSoundSource.Stop();
-                StopCoroutine(coroutine);
+                Pause();
             }
         }
 
@@ -62,10 +69,31 @@ namespace EyeOfHitman
 			Debug.Log ("Deactivating Last speaker");
 			//stop last speaker
 			ShutUpCurrentSpeaker();
+            coroutine = null;
 		}
 
 
-		public void ShutUpCurrentSpeaker()
+        public void Pause()
+        {
+            if (CurrentSpeaker != null)
+            {
+                CurrentSpeaker.SetTalking(false);
+                DialogSoundSource.Pause();
+            }
+            
+        }
+
+        public void Resume()
+        {
+            if (CurrentSpeaker != null)
+            {
+                CurrentSpeaker.SetTalking(true);
+                DialogSoundSource.UnPause();
+            }
+            
+        }
+
+        public void ShutUpCurrentSpeaker()
 		{
 			if(CurrentSpeaker != null)
 				CurrentSpeaker.SetTalking(false);
