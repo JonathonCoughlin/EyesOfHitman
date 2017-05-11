@@ -17,6 +17,7 @@ public class RedCarpetSequence : MonoBehaviour {
     //Things to turn off
     public List<SplineWalker> m_Cars;
     public List<Light> m_Lights;
+    public List<GameObject> m_Photographers;
 
     // Use this for initialization
     void Start () {
@@ -50,7 +51,7 @@ public class RedCarpetSequence : MonoBehaviour {
         m_BackgroundMusic.Stop();
         Destroy(LippyStatic.gameObject);
         Destroy(Mumbler.gameObject);
-        //Destroy Camera Men
+        KillPhotographers();
     }
 
     public void ActivateFPControl()
@@ -74,6 +75,14 @@ public class RedCarpetSequence : MonoBehaviour {
         m_Cars.ForEach(delegate (SplineWalker curCar)
         {
             Destroy(curCar.gameObject);
+        });
+    }
+
+    public void KillPhotographers()
+    {
+        m_Photographers.ForEach(delegate (GameObject curGuy)
+        {
+            Destroy(curGuy.gameObject);
         });
     }
 

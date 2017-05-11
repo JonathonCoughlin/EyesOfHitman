@@ -12,6 +12,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -135,10 +136,12 @@ public class PauseMenu : MonoBehaviour
 				}
 				
 				// Quit button
-				if(GUI.Button(new Rect(Screen.width/2 - buttonWidth/2, buttonHeight*4, buttonWidth, buttonHeight), "Quit Game", pauseMenuStyle))
+				if(GUI.Button(new Rect(Screen.width/2 - buttonWidth/2, buttonHeight*4, buttonWidth, buttonHeight), "Restart Game", pauseMenuStyle))
 				{
-					quitDialog = true;
-				}
+                    SceneManager.LoadScene(0, LoadSceneMode.Single);
+                    PauseGame();
+                    //quitDialog = true;
+                }
 			}
 			else if( mouseSettings)
 			{

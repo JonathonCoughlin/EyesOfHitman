@@ -19,6 +19,8 @@ namespace FirstPersonExploration
         public GameObject m_HandBone;
         public AudioSource m_Voice;
         public VocalQueuer m_VocalQueue;
+        public Camera m_MyCamera;
+        public GameObject m_throwRayGuideObj;
 
         //States
         protected bool m_propInHand = false;
@@ -98,10 +100,16 @@ namespace FirstPersonExploration
 
         public void ThrowProp()
         {
-            Transform camPos = Camera.main.transform;
-            Ray throwRay = new Ray(camPos.position, camPos.forward);
-            m_currentProp.ThrowMe(throwRay.direction);
+            //Transform camPos = Camera.main.transform;
+            //Ray throwRay = new Ray(camPos.position, camPos.forward);
+            m_currentProp.ThrowMe(GetThrowVector());
             EmptyHands();
+        }
+
+        public Vector3 GetThrowVector()
+        {
+            Ray throwRay = m_MyCamera.ScreenPointToRay(m_MyCamera.WorldToScreenPoint(m_throwRayGuideObj.transform.position));
+            return throwRay.direction;
         }
 
         public void EatProp()
@@ -162,7 +170,7 @@ namespace FirstPersonExploration
                 case FPPoseType.Grab:
                     {
                         m_FPAnimator.SetTrigger("Grab");
-                        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.NoControl);
+                        m_Drifter.SwitchControlTypes(WalkControlLimits.NoWalk, LookControlLimits.FullControl);
                         break;
                     }
 

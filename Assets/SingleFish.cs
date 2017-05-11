@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using FirstPersonExploration;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
@@ -46,11 +47,6 @@ public class SingleFish : MonoBehaviour {
         Physics.IgnoreLayerCollision(15, 16, true);
     }
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     public void FishermanAction()
     {
         m_Animator.SetTrigger("FishermanAction");
@@ -90,9 +86,11 @@ public class SingleFish : MonoBehaviour {
         //Add Velocity relative to player rotation
         m_RigidBody.isKinematic = false;
         Vector3 throwDirection = Camera.main.transform.forward;
+        throwDirection = m_hand.GetComponentInParent<FPExplorer>().GetThrowVector();
+        transform.SetParent(null);
         m_RigidBody.AddForce(throwDirection.normalized * m_throwSpeed, ForceMode.VelocityChange);
         Destroy(this.gameObject, 5f);
-        transform.SetParent(null);
+        
         
     }
 

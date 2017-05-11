@@ -10,6 +10,9 @@ public class BalloonMachine : MonoBehaviour {
 
     private FloatableBalloon m_Balloon;
 
+    public int m_maxBalloons;
+    private int m_totalBalloons;
+
 	// Use this for initialization
 	void Start () {
         SetComponents();
@@ -22,9 +25,14 @@ public class BalloonMachine : MonoBehaviour {
     
     private void MakeBalloon()
     {
-        GameObject balloonObject = (GameObject)Instantiate(balloonPrefab);
-        m_Balloon = balloonObject.GetComponent<FloatableBalloon>();
-        m_Balloon.InitializeBalloon(this);
+        if (m_totalBalloons < m_maxBalloons)
+        {
+            GameObject balloonObject = (GameObject)Instantiate(balloonPrefab);
+            m_Balloon = balloonObject.GetComponent<FloatableBalloon>();
+            m_Balloon.InitializeBalloon(this);
+            m_totalBalloons++;
+        }
+        
     }
 
     public void InflateBalloon()
@@ -52,5 +60,10 @@ public class BalloonMachine : MonoBehaviour {
     public void Off()
     {
         PauseInflation();
+    }
+
+    public void DeadBalloon()
+    {
+        m_totalBalloons--;
     }
 }

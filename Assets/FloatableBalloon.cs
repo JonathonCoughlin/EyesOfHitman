@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using FirstPersonExploration;
 
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(AudioSource))]
@@ -13,14 +14,16 @@ public class FloatableBalloon : MonoBehaviour {
     private MeshRenderer m_Renderer;
     private Animator m_Animator;
     private Rigidbody m_Rigidbody;
-    private SphereCollider m_SphereCollider;
+    private Collider m_Collider;
     private AudioSource m_AudioSource;
+    private Prop m_Prop;
 
     public BalloonMachine m_Machine;
 
     public Material[] colors;
     private Material m_color;
 
+    public float m_fullScaleRadius;
     public float m_bouyancyForceMag;
     public AudioClip m_popSound;
     public float m_popForceMag_Speed;
@@ -41,7 +44,8 @@ public class FloatableBalloon : MonoBehaviour {
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_AudioSource = GetComponent<AudioSource>();
-        m_SphereCollider = GetComponent<SphereCollider>();
+        m_Collider = GetComponent<Collider>();
+        m_Prop = GetComponent<Prop>();
     }
 
     public void InitializeBalloon(BalloonMachine myMachine)
@@ -52,6 +56,7 @@ public class FloatableBalloon : MonoBehaviour {
         Vector3 localPos = transform.position;
         transform.SetParent(myMachine.transform);
         transform.localPosition = localPos;
+        m_Prop.DisableMyBehaviors();
     }
 
     private void RandomizeColor()
@@ -91,7 +96,10 @@ public class FloatableBalloon : MonoBehaviour {
         transform.SetParent(null);
         m_Rigidbody.isKinematic = false;
         m_Rigidbody.useGravity = true;
+        m_Rigidbody.AddForce(new Vector3(Random.Range(0f, 0.5f), 0f, Random.Range(0f, 0.5f)), ForceMode.VelocityChange);
         m_floating = true;
+        m_Prop.ActivateAllBehaviors();
+        m_Prop.PauseMyCollisions(0.5f);
     }
 
     protected void PopMe()
@@ -99,10 +107,12 @@ public class FloatableBalloon : MonoBehaviour {
         m_AudioSource.PlayOneShot(m_popSound);
         //Hide, explode, stop collisions
         m_Renderer.enabled = false;
-        m_SphereCollider.isTrigger = true;
+        m_Collider.isTrigger = true;
         m_Rigidbody.isKinematic = true;
-        m_Rigidbody.AddExplosionForce(m_popForceMag_Speed, transform.position, m_SphereCollider.radius * 2f, 0f, ForceMode.VelocityChange);
+        m_Rigidbody.AddExplosionForce(m_popForceMag_Speed, transform.position, m_fullScaleRadius * transform.localScale.x * 2f, 0f, ForceMode.VelocityChange);
+        if (m_Machine != null) m_Machine.DeadBalloon();
         Destroy(gameObject, m_popSound.length);
+
     }
 
     protected void OnCollisionEnter(Collision hitDetails)

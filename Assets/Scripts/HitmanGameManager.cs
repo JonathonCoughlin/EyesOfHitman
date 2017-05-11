@@ -164,6 +164,7 @@ public class HitmanGameManager : MonoBehaviour {
             case GameState.ControlRoom:
                 {
                     m_BathroomSequence.EndSequence();
+                    m_BallroomSequence.TransitionSequence();
                     m_ControlRoomSequence.StartSequence();
                     break;
                 }

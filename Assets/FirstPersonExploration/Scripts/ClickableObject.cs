@@ -17,6 +17,7 @@ namespace FirstPersonExploration
         protected bool m_clickingAllowed = true; //master set by game
         protected bool m_displayHot = false;
         protected int m_oldLayer;
+        protected bool m_oldLayerSet = false;
         //-Highlighting
         public float m_highlightScale = 2f;
         protected bool m_allowHighlighting = true;
@@ -34,7 +35,7 @@ namespace FirstPersonExploration
         {
             SetComponents();
             SetColors();
-            m_oldLayer = gameObject.layer;
+            if (!m_oldLayerSet) m_oldLayer = gameObject.layer; m_oldLayerSet = true;
             ActivateAllBehaviors();
 
         }
@@ -90,6 +91,7 @@ namespace FirstPersonExploration
 
         public void AllowClicking()
         {
+            
             m_clickingAllowed = true;
         }
 
@@ -107,7 +109,7 @@ namespace FirstPersonExploration
 
         public void DisableAllBehaviors()
         {
-            m_oldLayer = gameObject.layer;
+            if (!m_oldLayerSet) m_oldLayer = gameObject.layer; m_oldLayerSet = true;
             gameObject.layer = 9; //no click layer
             ForbidClicking();
             LoseFocus();

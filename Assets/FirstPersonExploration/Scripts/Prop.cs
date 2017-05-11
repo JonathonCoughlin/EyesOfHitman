@@ -18,6 +18,7 @@ namespace FirstPersonExploration
         public FPPropAction m_propAction;
         public bool m_playAudioOnAction;
         public AudioClip m_actionAudio;
+        public float m_collisionDelaySec = 0f;
 
         //States
         protected bool m_beingHeld = false;
@@ -43,6 +44,12 @@ namespace FirstPersonExploration
                 Debug.Log("PickingMeUp");
                 m_FPExplorer.GrabProp(this);
             }   
+        }
+
+        public void DisableMyBehaviors()
+        {
+            DisableAllBehaviors();
+            StopMyPhysics();
         }
 
         public bool AmHeld()
@@ -80,7 +87,7 @@ namespace FirstPersonExploration
         public void ThrowMe(Vector3 throwVector)
         {
             m_Rigidbody.isKinematic = false;
-            m_Collider.isTrigger = false;
+            StartCoroutine(CollisionDelay());
             this.transform.parent = null;
             Vector3 throwImpulse = throwVector.normalized * m_throwSpeed * m_Rigidbody.mass;
             m_Rigidbody.AddForce(throwImpulse, ForceMode.Impulse);
@@ -88,9 +95,22 @@ namespace FirstPersonExploration
             m_flying = true;
         }
 
+        IEnumerator CollisionDelay()
+        {
+            yield return new WaitForSeconds(m_collisionDelaySec);
+            m_Collider.isTrigger = false;
+        }
+
         public virtual void EatMe()
         {
             Destroy(this.gameObject);
+        }
+
+        public IEnumerator PauseMyCollisions(float waitSeconds)
+        {
+            m_Collider.isTrigger = true;
+            yield return new WaitForSeconds(waitSeconds);
+            m_Collider.isTrigger = false;
         }
         
         void OnCollisionEnter(Collision hitDetails)
